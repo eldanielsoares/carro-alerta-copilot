@@ -20,7 +20,7 @@ const Quiz = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [couponCode, setCouponCode] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [scoreStep, setScoreStep] = useState(false); // novo: controla se mostra o score
+  const [scoreStep, setScoreStep] = useState(false);
   const navigate = useNavigate();
 
   const quizQuestions = [
@@ -111,28 +111,53 @@ const Quiz = () => {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    
     // Sempre gera um cupom aleatório novo ao enviar
     const randomCoupon = `ORYZUM${Math.floor(Math.random() * 100000)}`;
     setCouponCode(randomCoupon);
 
     const leadUrl = 'https://api.sheety.co/dcad7a9f3b6bfb680d978268bd9f9ee9/outis/leads';
     const cupomUrl = 'https://api.sheety.co/dcad7a9f3b6bfb680d978268bd9f9ee9/outis/cupom';
+    const quizUrl = 'https://api.sheety.co/dcad7a9f3b6bfb680d978268bd9f9ee9/outis/quiz';
 
-    const body = {
+    // Preparar dados do quiz
+    const quizBody = {
+      quiz: {
+        q1: quizAnswers[0] || '',
+        q2: quizAnswers[1] || '',
+        q3: quizAnswers[2] || '',
+        email: formData.email
+      }
+    };
+
+    const leadBody = {
       lead: {
         nome: formData.name,
         email: formData.email,
         telefone: formData.whatsapp,
-        // Aqui envia "coupon" do form (indicação do amigo), se houver
         cupom: formData.coupon || ''
       }
     };
 
     try {
-      const response = await fetch(leadUrl, {
+      // Enviar dados do quiz
+      console.log('Enviando dados do quiz:', quizBody);
+      const quizResponse = await fetch(quizUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
+        body: JSON.stringify(quizBody),
+      });
+
+      if (quizResponse.ok) {
+        const quizJson = await quizResponse.json();
+        console.log('Resposta do quiz:', quizJson.quiz);
+      }
+
+      // Enviar dados do lead
+      const leadResponse = await fetch(leadUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(leadBody),
       });
 
       // Sempre salva o cupom NOVO e aleatório
@@ -149,8 +174,8 @@ const Quiz = () => {
         });
       }
 
-      if (response.ok) {
-        const data = await response.json();
+      if (leadResponse.ok) {
+        const data = await leadResponse.json();
         toast({
           title: "Sucesso!",
           description: "Seus dados foram salvos. Veja seu cupom especial abaixo.",
@@ -164,6 +189,7 @@ const Quiz = () => {
         });
       }
     } catch (error) {
+      console.error('Erro ao enviar dados:', error);
       toast({
         title: "Erro inesperado!",
         description: "Ocorreu um problema ao enviar seus dados.",
