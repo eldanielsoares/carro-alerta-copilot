@@ -137,14 +137,14 @@ const Index = () => {
               <Button 
                 size="lg" 
                 onClick={scrollToForm}
-                className="bg-black hover:bg-gray-800 text-white px-8 py-4 text-lg font-bold break-words whitespace-normal text-center min-h-[56px]"
+                className="bg-black hover:bg-gray-800 text-white px-8 py-6 text-lg font-bold break-words whitespace-normal text-center min-h-[56px]"
               >
                 QUERO PROTEGER MEU CARRO AGORA
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-gray-600 text-gray-700 hover:bg-gray-100 px-8 py-4 text-lg font-bold break-words whitespace-normal text-center min-h-[56px]"
+                className="border-gray-600 text-gray-700 hover:bg-gray-100 px-8 py-6 text-lg font-bold break-words whitespace-normal text-center min-h-[56px]"
               >
                 VER COMO FUNCIONA
               </Button>
