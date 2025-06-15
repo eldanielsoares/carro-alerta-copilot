@@ -364,13 +364,9 @@ const Index = () => {
                       <span role="img" aria-label="escudo">🛡️</span>
                       Proteja seu carro <span className="text-orange-600 ml-1">AGORA</span>
                     </h2>
-                    <div className="mb-4">
-                      <div className="inline-flex items-center gap-2 px-4 py-2 rounded bg-orange-100 border border-orange-300 text-orange-700 font-semibold text-lg">
-                        Remessa esgotada&nbsp;<span role="img" aria-label="alerta">⚠️</span>
-                      </div>
-                    </div>
+                    {/* Removido alerta "Remessa esgotada" */}
                     <p className="text-lg text-gray-700">
-                      A oferta especial já esgotou, mas você ainda pode entrar para a <span className="font-bold text-orange-600">lista de espera</span> e ser avisado na próxima abertura. Preencha seus dados e garanta prioridade!
+                      A oferta especial já acabou, mas você ainda pode entrar para a <span className="font-bold text-orange-600">lista de espera</span> e ser avisado na próxima abertura. Preencha seus dados e garanta prioridade!
                     </p>
                   </div>
 
@@ -439,7 +435,7 @@ const Index = () => {
 
                   <div className="mt-8 p-6 bg-gray-100 rounded-lg border-2 border-gray-200 text-center">
                     <span className="inline-flex items-center font-bold text-lg text-gray-600 gap-2">
-                      <Gift className="inline-block mr-1" /> Oferta especial esgotada
+                      <Gift className="inline-block mr-1" /> Oferta especial indisponível
                     </span>
                     <p className="text-black mt-2">
                       As próximas vagas serão avisadas por e-mail e WhatsApp. Cadastre-se para garantir prioridade!
