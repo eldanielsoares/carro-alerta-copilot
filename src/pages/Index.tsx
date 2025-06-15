@@ -32,13 +32,15 @@ const Index = () => {
       const url = 'https://api.sheety.co/dcad7a9f3b6bfb680d978268bd9f9ee9/outis/leads';
       const cupomUrl = 'https://api.sheety.co/dcad7a9f3b6bfb680d978268bd9f9ee9/outis/cupom';
 
-      const generatedCoupon = formData.coupon || `ORYZUM${Math.floor(Math.random() * 1000)}`;
+      // Cupom NOVO e aleatório gerado SEMPRE na inscrição
+      const generatedCoupon = `ORYZUM${Math.floor(Math.random() * 100000)}`;
       const body = {
         lead: {
           nome: formData.name,
           email: formData.email,
           telefone: formData.whatsapp,
-          cupom: generatedCoupon,
+          // Aqui envia "coupon" do form (indicação do amigo), se houver
+          cupom: formData.coupon || ''
         }
       };
 
@@ -57,7 +59,7 @@ const Index = () => {
       if (response.ok) {
         console.log('Lead salvo com sucesso:', json.lead);
 
-        // Após o lead ser salvo, salva o cupom na outra tabela também
+        // Após o lead ser salvo, salva o cupom aleatório NOVO na aba cupom
         if (formData.email) {
           await fetch(cupomUrl, {
             method: 'POST',

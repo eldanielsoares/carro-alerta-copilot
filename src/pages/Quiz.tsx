@@ -54,9 +54,9 @@ const Quiz = () => {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const randomCoupon = `ORYZUM${Math.floor(Math.random() * 1000)}`;
-    const cupomToSend = formData.coupon || randomCoupon;
-    setCouponCode(cupomToSend);
+    // Sempre gera um cupom aleatório novo ao enviar
+    const randomCoupon = `ORYZUM${Math.floor(Math.random() * 100000)}`;
+    setCouponCode(randomCoupon);
 
     const leadUrl = 'https://api.sheety.co/dcad7a9f3b6bfb680d978268bd9f9ee9/outis/leads';
     const cupomUrl = 'https://api.sheety.co/dcad7a9f3b6bfb680d978268bd9f9ee9/outis/cupom';
@@ -66,7 +66,8 @@ const Quiz = () => {
         nome: formData.name,
         email: formData.email,
         telefone: formData.whatsapp,
-        cupom: cupomToSend
+        // Aqui envia "coupon" do form (indicação do amigo), se houver
+        cupom: formData.coupon || ''
       }
     };
 
@@ -77,6 +78,7 @@ const Quiz = () => {
         body: JSON.stringify(body),
       });
 
+      // Sempre salva o cupom NOVO e aleatório
       if (formData.email) {
         await fetch(cupomUrl, {
           method: 'POST',
@@ -84,7 +86,7 @@ const Quiz = () => {
           body: JSON.stringify({
             cupom: {
               email: formData.email,
-              cupom: cupomToSend
+              cupom: randomCoupon
             }
           }),
         });
@@ -92,7 +94,6 @@ const Quiz = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("Lead salvo com sucesso (quiz):", data.lead);
         toast({
           title: "Sucesso!",
           description: "Seus dados foram salvos. Veja seu cupom especial abaixo.",
