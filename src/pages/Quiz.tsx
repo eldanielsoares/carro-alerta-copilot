@@ -277,19 +277,14 @@ const Quiz = () => {
                 {
                   (() => {
                     const result = calculateScore(quizAnswers);
-
-                    // Coordenadas do traço na barra (de 0 a 100%)
                     const progress = result.progress;
-
                     return (
                       <>
                         <span className={`text-xl font-bold mb-3 uppercase tracking-wide ${result.labelColor}`}>
                           {result.label}
                         </span>
                         <div className="relative w-full max-w-xs mb-2 h-8 flex items-center">
-                          {/* Barra gradiente */}
                           <div className="w-full h-5 rounded-full overflow-hidden bg-gradient-to-r from-green-400 via-yellow-400 to-red-500" />
-                          {/* Traço marcador */}
                           <div
                             className="absolute top-0 left-0 h-8 flex items-center pointer-events-none"
                             style={{
@@ -298,7 +293,6 @@ const Quiz = () => {
                           >
                             <div className="w-0.5 h-8 bg-black/80 rounded" />
                           </div>
-                          {/* Camada branca cobrindo barra à direita do traço para parecer "medidor" */}
                           <div
                             className="absolute top-0 bottom-0 right-0 bg-white pointer-events-none"
                             style={{
@@ -316,7 +310,7 @@ const Quiz = () => {
                           className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-10"
                           onClick={handleContinueAfterScore}
                         >
-                          Continuar
+                          GARANTIR MEU DESCONTO AGORA
                         </Button>
                       </>
                     );
