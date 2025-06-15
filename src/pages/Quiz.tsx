@@ -308,7 +308,7 @@ const Quiz = () => {
               <Alert className="mb-8 border-orange-200 bg-orange-100">
                 <AlertTriangle className="h-4 w-4 text-orange-600" />
                 <AlertDescription className="text-black">
-                  <strong>⚠️ ATENÇÃO:</strong> Você quase chegou a tempo. A primeira leva de 300 scanners ESGOTOU.
+                  <strong>⚠️ ATENÇÃO:</strong> Você quase chegou a tempo. <b>Esta remessa especial de 300 scanners ESGOTOU.</b>
                 </AlertDescription>
               </Alert>
 
