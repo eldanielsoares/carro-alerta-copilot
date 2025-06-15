@@ -109,45 +109,57 @@ const Index = () => {
       {/* Hero Section */}
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-normal">
-              <span
-                className="block bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent"
-              >
-                Seu carro pode estar escondendo
-              </span>
-              <span
-                className="block bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent"
-              >
-                um problema sério
-              </span>
-              <span
-                className="block bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent"
-              >
-                — e você nem imagina.
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
-              Descubra os problemas ocultos do seu carro <span className="text-gray-800 font-bold">ANTES</span> que virem prejuízo. 
-              Nossa IA monitora seu carro 24h e te avisa direto no WhatsApp.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button 
-                size="lg" 
-                onClick={scrollToForm}
-                className="w-full sm:w-auto bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white px-8 py-6 text-lg font-extrabold uppercase tracking-tight rounded-md border-0 shadow-none break-words whitespace-normal text-center min-h-[56px] transition-colors"
-              >
-                QUERO PROTEGER MEU CARRO AGORA
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                onClick={scrollToHowItWorks}
-                className="w-full sm:w-auto border-gray-600 text-gray-700 hover:bg-gray-100 px-8 py-6 text-lg font-bold break-words whitespace-normal text-center min-h-[56px] rounded-md shadow-none"
-              >
-                VER COMO FUNCIONA
-              </Button>
+          <div className="flex flex-col-reverse md:flex-row items-center md:items-stretch max-w-5xl mx-auto">
+            {/* Texto Hero */}
+            <div className="w-full md:w-1/2 flex flex-col justify-center text-center md:text-left">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-normal">
+                <span
+                  className="block bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent"
+                >
+                  Seu carro pode estar escondendo
+                </span>
+                <span
+                  className="block bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent"
+                >
+                  um problema sério
+                </span>
+                <span
+                  className="block bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent"
+                >
+                  — e você nem imagina.
+                </span>
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
+                Descubra os problemas ocultos do seu carro <span className="text-gray-800 font-bold">ANTES</span> que virem prejuízo. 
+                Nossa IA monitora seu carro 24h e te avisa direto no WhatsApp.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-12">
+                <Button 
+                  size="lg" 
+                  onClick={scrollToForm}
+                  className="w-full sm:w-auto bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white px-8 py-6 text-lg font-extrabold uppercase tracking-tight rounded-md border-0 shadow-none break-words whitespace-normal text-center min-h-[56px] transition-colors"
+                >
+                  QUERO PROTEGER MEU CARRO AGORA
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  onClick={scrollToHowItWorks}
+                  className="w-full sm:w-auto border-gray-600 text-gray-700 hover:bg-gray-100 px-8 py-6 text-lg font-bold break-words whitespace-normal text-center min-h-[56px] rounded-md shadow-none"
+                >
+                  VER COMO FUNCIONA
+                </Button>
+              </div>
+            </div>
+            {/* Imagem Hero */}
+            <div className="w-full md:w-1/2 flex justify-center items-center mb-10 md:mb-0">
+              <img
+                src="/lovable-uploads/8f7881f4-f248-43be-bb9b-5a62c9b21496.png"
+                alt="Dispositivo ORYZUM"
+                className="mx-auto max-w-[270px] md:max-w-xs lg:max-w-sm h-auto drop-shadow-lg transition-transform hover:scale-105"
+                style={{ background: "transparent" }}
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
