@@ -119,7 +119,7 @@ const Index = () => {
               <Button 
                 size="lg" 
                 onClick={scrollToForm}
-                className="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 text-white px-8 py-6 text-lg font-extrabold uppercase tracking-tight rounded-md border-0 shadow-none break-words whitespace-normal text-center min-h-[56px]"
+                className="w-full sm:w-auto bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white px-8 py-6 text-lg font-extrabold uppercase tracking-tight rounded-md border-0 shadow-none break-words whitespace-normal text-center min-h-[56px] transition-colors"
               >
                 QUERO PROTEGER MEU CARRO AGORA
               </Button>
@@ -148,7 +148,7 @@ const Index = () => {
             <Button 
               size="lg" 
               onClick={() => navigate('/quiz')}
-              className="bg-gray-700 hover:bg-gray-800 text-white px-8 py-4 text-lg font-bold"
+              className="bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white px-8 py-4 text-lg font-bold transition-colors"
             >
               FAZER ANÁLISE GRATUITA
             </Button>
@@ -369,7 +369,6 @@ const Index = () => {
                       A oferta especial já acabou, mas você ainda pode entrar para a <span className="font-bold text-orange-600">lista de espera</span> e ser avisado na próxima abertura. Preencha seus dados e garanta prioridade!
                     </p>
                   </div>
-
                   <form onSubmit={handleFormSubmit} className="space-y-6">
                     <div>
                       <Label htmlFor="name" className="text-black font-semibold">Nome completo</Label>
@@ -426,13 +425,12 @@ const Index = () => {
                       type="submit"
                       size="lg"
                       disabled={isSubmitting}
-                      className="w-full bg-orange-600 hover:bg-orange-700 text-white py-4 text-lg font-bold disabled:opacity-50"
+                      className="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white py-4 text-lg font-bold disabled:opacity-50 transition-colors"
                     >
                       <Gift className="mr-2" />
                       {isSubmitting ? 'ENVIANDO...' : 'ENTRAR NA LISTA DE ESPERA'}
                     </Button>
                   </form>
-
                   <div className="mt-8 p-6 bg-gray-100 rounded-lg border-2 border-gray-200 text-center">
                     <span className="inline-flex items-center font-bold text-lg text-gray-600 gap-2">
                       <Gift className="inline-block mr-1" /> Oferta especial indisponível

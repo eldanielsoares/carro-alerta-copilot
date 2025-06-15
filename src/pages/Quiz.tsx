@@ -186,7 +186,6 @@ const Quiz = () => {
               <h2 className="text-3xl font-bold text-center text-black mb-8">
                 🎯 Descubra o nível de risco do seu carro em 30 segundos
               </h2>
-
               {quizStep < quizQuestions.length ? (
                  <Card className="bg-white border-2 border-gray-200 shadow-xl">
                    <CardContent className="p-8">
@@ -210,13 +209,12 @@ const Quiz = () => {
                          {quizQuestions[quizStep].question}
                        </h3>
                      </div>
-
                     <div className="space-y-3">
                       {quizQuestions[quizStep].options.map((option, index) => (
                         <Button
                           key={index}
                           onClick={() => handleQuizAnswer(option)}
-                          className="w-full bg-gray-700 hover:bg-gray-800 text-white p-4 text-left justify-start font-bold"
+                          className="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white p-4 text-left justify-start font-bold transition-colors"
                           size="lg"
                         >
                           {option}
@@ -241,10 +239,10 @@ const Quiz = () => {
                    </CardContent>
                  </Card>
                )}
-             </div>
-           </div>
-         </section>
-       )}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Card de feedback do score */}
       {scoreStep && !showForm && !showSuccess && (
@@ -285,7 +283,7 @@ const Quiz = () => {
                         <div className="mb-6 text-gray-800 text-lg mt-4">{result.msg}</div>
                         <Button
                           size="lg"
-                          className="w-full min-h-[56px] flex items-center justify-center bg-orange-600 hover:bg-orange-700 text-white font-bold py-6 px-4 break-words whitespace-normal text-center text-lg"
+                          className="w-full min-h-[56px] flex items-center justify-center bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white font-bold py-6 px-4 break-words whitespace-normal text-center text-lg transition-colors"
                           onClick={handleContinueAfterScore}
                         >
                           GARANTIR MEU DESCONTO AGORA
@@ -311,7 +309,6 @@ const Quiz = () => {
                   <strong>⚠️ ATENÇÃO:</strong> Você quase chegou a tempo. <b>Esta remessa especial de 300 scanners ESGOTOU.</b>
                 </AlertDescription>
               </Alert>
-
               <Card className="bg-white border-2 border-gray-200 shadow-xl">
                 <CardContent className="p-8">
                   <div className="text-center mb-8">
@@ -323,7 +320,6 @@ const Quiz = () => {
                       antes que seu carro vire um problema.
                     </p>
                   </div>
-
                   <form onSubmit={handleFormSubmit} className="space-y-6">
                     <div>
                       <Label htmlFor="name" className="text-black font-semibold">Nome completo</Label>
@@ -379,13 +375,12 @@ const Quiz = () => {
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full min-h-[56px] flex items-center justify-center bg-orange-600 hover:bg-orange-700 text-white py-6 text-lg font-bold break-words whitespace-normal text-center"
+                      className="w-full min-h-[56px] flex items-center justify-center bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white py-6 text-lg font-bold break-words whitespace-normal text-center transition-colors"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? "Enviando..." : "QUERO MEU SCANNER COM DESCONTO"}
                     </Button>
                   </form>
-
                   <div className="mt-8 p-6 bg-green-50 rounded-lg border-2 border-green-200">
                     <h3 className="text-xl font-bold text-green-600 mb-2">🎁 Oferta Especial:</h3>
                     <p className="text-black mb-2">
