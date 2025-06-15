@@ -376,7 +376,7 @@ const Index = () => {
       {/* Protection Form Section */}
       <section
         id="protection-form"
-        className="py-16 bg-gradient-to-br from-green-400 via-green-500 to-green-700"
+        className="py-16 bg-gradient-to-br from-green-100 via-green-200 to-green-300"
       >
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
