@@ -18,6 +18,8 @@ const Quiz = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [couponCode, setCouponCode] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showFeedback, setShowFeedback] = useState(false);
+  const [feedbackMsg, setFeedbackMsg] = useState('');
   const navigate = useNavigate();
 
   const quizQuestions = [
@@ -38,17 +40,32 @@ const Quiz = () => {
     }
   ];
 
+  // Mensagens de motivação para cada etapa do quiz
+  const feedbacks = [
+    "Ótimo! Falta pouco para sua análise personalizada 🚗",
+    "Boa! Só mais uma pergunta e você garantirá seu desconto 💸",
+    "Show! Analisando seus dados para garantir o melhor desconto 👏"
+  ];
+
   const handleQuizAnswer = (answer: string) => {
     const newAnswers = [...quizAnswers, answer];
-    setQuizAnswers(newAnswers);
-    
-    if (quizStep < quizQuestions.length - 1) {
-      setQuizStep(quizStep + 1);
-    } else {
-      setTimeout(() => {
-        setShowForm(true);
-      }, 2000);
-    }
+
+    // Mostra feedback e depois avança para próxima pergunta
+    setFeedbackMsg(feedbacks[quizStep] || 'Perfeito!');
+    setShowFeedback(true);
+
+    setTimeout(() => {
+      setShowFeedback(false);
+      setQuizAnswers(newAnswers);
+
+      if (quizStep < quizQuestions.length - 1) {
+        setQuizStep(quizStep + 1);
+      } else {
+        setTimeout(() => {
+          setShowForm(true);
+        }, 2000);
+      }
+    }, 1000);
   };
 
   const handleFormSubmit = async (e: React.FormEvent) => {
@@ -153,7 +170,14 @@ const Quiz = () => {
                 🎯 Descubra o nível de risco do seu carro em 30 segundos
               </h2>
 
-              {quizStep < quizQuestions.length ? (
+              {showFeedback ? (
+                <div className="flex flex-col items-center justify-center h-[320px] animate-fade-in">
+                  <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-orange-400 mb-4">
+                    <span className="text-2xl font-semibold text-orange-600">{feedbackMsg}</span>
+                  </div>
+                  <div className="text-center text-gray-700">Aguarde...</div>
+                </div>
+              ) : quizStep < quizQuestions.length ? (
                 <Card className="bg-white border-2 border-gray-200 shadow-xl">
                   <CardContent className="p-8">
                     <div className="mb-6">
@@ -184,6 +208,7 @@ const Quiz = () => {
                           onClick={() => handleQuizAnswer(option)}
                           className="w-full bg-gray-700 hover:bg-gray-800 text-white p-4 text-left justify-start font-bold"
                           size="lg"
+                          disabled={showFeedback}
                         >
                           {option}
                         </Button>
