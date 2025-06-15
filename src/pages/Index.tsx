@@ -360,12 +360,17 @@ const Index = () => {
               <Card className="bg-white border-2 border-gray-200 shadow-xl">
                 <CardContent className="p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-3xl font-bold text-black mb-4">
-                      🛡️ Proteja seu carro <span className="text-orange-600">AGORA</span>
+                    <h2 className="text-3xl font-bold text-black mb-4 flex items-center justify-center gap-2">
+                      <span role="img" aria-label="escudo">🛡️</span>
+                      Proteja seu carro <span className="text-orange-600 ml-1">AGORA</span>
                     </h2>
+                    <div className="mb-4">
+                      <div className="inline-flex items-center gap-2 px-4 py-2 rounded bg-orange-100 border border-orange-300 text-orange-700 font-semibold text-lg">
+                        Remessa esgotada&nbsp;<span role="img" aria-label="alerta">⚠️</span>
+                      </div>
+                    </div>
                     <p className="text-lg text-gray-700">
-                      Preencha seus dados e entre para o grupo dos motoristas que mais economizam 
-                      antes que seu carro vire um problema.
+                      A oferta especial já esgotou, mas você ainda pode entrar para a <span className="font-bold text-orange-600">lista de espera</span> e ser avisado na próxima abertura. Preencha seus dados e garanta prioridade!
                     </p>
                   </div>
 
@@ -428,17 +433,16 @@ const Index = () => {
                       className="w-full bg-orange-600 hover:bg-orange-700 text-white py-4 text-lg font-bold disabled:opacity-50"
                     >
                       <Gift className="mr-2" />
-                      {isSubmitting ? 'ENVIANDO...' : 'QUERO PROTEGER MEU CARRO AGORA'}
+                      {isSubmitting ? 'ENVIANDO...' : 'ENTRAR NA LISTA DE ESPERA'}
                     </Button>
                   </form>
 
-                  <div className="mt-8 p-6 bg-green-50 rounded-lg border-2 border-green-200">
-                    <h3 className="text-xl font-bold text-green-600 mb-2">🎁 Oferta Especial:</h3>
-                    <p className="text-black mb-2">
-                      ✓ <strong>25% de desconto exclusivo</strong> para os primeiros 100
-                    </p>
-                    <p className="text-black">
-                      ✓ <strong>Indique 1 amigo e ambos ganham 40% de desconto</strong>
+                  <div className="mt-8 p-6 bg-gray-100 rounded-lg border-2 border-gray-200 text-center">
+                    <span className="inline-flex items-center font-bold text-lg text-gray-600 gap-2">
+                      <Gift className="inline-block mr-1" /> Oferta especial esgotada
+                    </span>
+                    <p className="text-black mt-2">
+                      As próximas vagas serão avisadas por e-mail e WhatsApp. Cadastre-se para garantir prioridade!
                     </p>
                   </div>
                 </CardContent>
