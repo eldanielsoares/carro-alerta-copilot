@@ -295,7 +295,11 @@ const Index = () => {
                 <div className="bg-gray-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-white">1</span>
                 </div>
-                <h3 className="text-xl font-bold text-black mb-2">Plugue o Scanner</h3>
+                <h3 className="text-xl font-bold mb-2">
+                  <span className="bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent">
+                    Plugue o Scanner
+                  </span>
+                </h3>
                 <p className="text-gray-700">Conecte o dispositivo OBD2 em 30 segundos. Mais fácil que carregar o celular.</p>
               </div>
 
@@ -303,7 +307,11 @@ const Index = () => {
                 <div className="bg-gray-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-white">2</span>
                 </div>
-                <h3 className="text-xl font-bold text-black mb-2">IA Monitora</h3>
+                <h3 className="text-xl font-bold mb-2">
+                  <span className="bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent">
+                    IA Monitora
+                  </span>
+                </h3>
                 <p className="text-gray-700">Nossa inteligência artificial trabalha 24h analisando a saúde do seu carro.</p>
               </div>
 
@@ -311,7 +319,11 @@ const Index = () => {
                 <div className="bg-gray-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-white">3</span>
                 </div>
-                <h3 className="text-xl font-bold text-black mb-2">Recebe Alertas</h3>
+                <h3 className="text-xl font-bold mb-2">
+                  <span className="bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent">
+                    Recebe Alertas
+                  </span>
+                </h3>
                 <p className="text-gray-700">WhatsApp te avisa sobre problemas ANTES que eles aconteçam. Simples assim.</p>
               </div>
             </div>
