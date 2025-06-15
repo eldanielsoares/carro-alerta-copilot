@@ -1,13 +1,28 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Smartphone, Shield, DollarSign, CheckCircle, Zap, Instagram, Youtube, FileText, AlertTriangle } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Smartphone, Shield, DollarSign, CheckCircle, Zap, Instagram, Youtube, FileText, AlertTriangle, Gift } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({ name: '', email: '', whatsapp: '', coupon: '' });
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const scrollToForm = () => {
+    const formElement = document.getElementById('protection-form');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setShowSuccess(true);
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -49,7 +64,11 @@ const Index = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button size="lg" className="bg-black hover:bg-gray-800 text-white px-8 py-4 text-lg font-bold">
+              <Button 
+                size="lg" 
+                onClick={scrollToForm}
+                className="bg-black hover:bg-gray-800 text-white px-8 py-4 text-lg font-bold"
+              >
                 <Zap className="mr-2" />
                 QUERO PROTEGER MEU CARRO AGORA
               </Button>
@@ -274,6 +293,113 @@ const Index = () => {
               <Badge variant="outline" className="text-black border-gray-400">✓ 100% Seguro</Badge>
               <Badge variant="outline" className="text-black border-gray-400">✓ Fácil Instalação</Badge>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Protection Form Section */}
+      <section id="protection-form" className="py-16 bg-orange-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto">
+            {!showSuccess ? (
+              <Card className="bg-white border-2 border-gray-200 shadow-xl">
+                <CardContent className="p-8">
+                  <div className="text-center mb-8">
+                    <h2 className="text-3xl font-bold text-black mb-4">
+                      🛡️ Proteja seu carro <span className="text-orange-600">AGORA</span>
+                    </h2>
+                    <p className="text-lg text-gray-700">
+                      Preencha seus dados e entre para o grupo dos motoristas que mais economizam 
+                      antes que seu carro vire um problema.
+                    </p>
+                  </div>
+
+                  <form onSubmit={handleFormSubmit} className="space-y-6">
+                    <div>
+                      <Label htmlFor="name" className="text-black font-semibold">Nome completo</Label>
+                      <Input
+                        id="name"
+                        type="text"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({...formData, name: e.target.value})}
+                        className="bg-white border-2 border-gray-200 text-black focus:border-orange-500"
+                        placeholder="Seu nome completo"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="email" className="text-black font-semibold">Email</Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        className="bg-white border-2 border-gray-200 text-black focus:border-orange-500"
+                        placeholder="seu@email.com"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="whatsapp" className="text-black font-semibold">WhatsApp</Label>
+                      <Input
+                        id="whatsapp"
+                        type="tel"
+                        required
+                        value={formData.whatsapp}
+                        onChange={(e) => setFormData({...formData, whatsapp: e.target.value})}
+                        className="bg-white border-2 border-gray-200 text-black focus:border-orange-500"
+                        placeholder="(11) 99999-9999"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="coupon" className="text-black font-semibold">Cupom de desconto (opcional)</Label>
+                      <Input
+                        id="coupon"
+                        type="text"
+                        value={formData.coupon}
+                        onChange={(e) => setFormData({...formData, coupon: e.target.value})}
+                        className="bg-white border-2 border-gray-200 text-black focus:border-orange-500"
+                        placeholder="Digite seu cupom aqui"
+                      />
+                    </div>
+
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full bg-orange-600 hover:bg-orange-700 text-white py-4 text-lg font-bold"
+                    >
+                      <Gift className="mr-2" />
+                      QUERO PROTEGER MEU CARRO AGORA
+                    </Button>
+                  </form>
+
+                  <div className="mt-8 p-6 bg-green-50 rounded-lg border-2 border-green-200">
+                    <h3 className="text-xl font-bold text-green-600 mb-2">🎁 Oferta Especial:</h3>
+                    <p className="text-black mb-2">
+                      ✓ <strong>25% de desconto exclusivo</strong> para os primeiros 100
+                    </p>
+                    <p className="text-black">
+                      ✓ <strong>Indique 1 amigo e ambos ganham 40% de desconto</strong>
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            ) : (
+              <Card className="bg-white border-2 border-gray-200 shadow-xl">
+                <CardContent className="p-8 text-center">
+                  <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-6" />
+                  <h2 className="text-3xl font-bold text-black mb-4">
+                    🎉 Parabéns! Seus problemas com o carro estão prestes a virar coisa do passado.
+                  </h2>
+                  <p className="text-lg text-gray-700 mb-8">
+                    Entraremos em contato em breve com mais detalhes sobre como proteger seu carro.
+                  </p>
+                </CardContent>
+              </Card>
+            )}
           </div>
         </div>
       </section>
