@@ -102,14 +102,23 @@ const Index = () => {
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold text-black mb-6">
-              <span className="text-gray-800">Seu carro pode estar escondendo</span>
-              <br />
-              <span className="text-black">um problema sério</span>
-              <br />
-              <span className="text-gray-600">— e você nem imagina.</span>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-normal">
+              <span
+                className="block bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent"
+              >
+                Seu carro pode estar escondendo
+              </span>
+              <span
+                className="block bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent"
+              >
+                um problema sério
+              </span>
+              <span
+                className="block bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent"
+              >
+                — e você nem imagina.
+              </span>
             </h1>
-            
             <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
               Descubra os problemas ocultos do seu carro <span className="text-gray-800 font-bold">ANTES</span> que virem prejuízo. 
               Nossa IA monitora seu carro 24h e te avisa direto no WhatsApp.
