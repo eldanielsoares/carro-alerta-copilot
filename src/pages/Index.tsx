@@ -324,7 +324,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-black mb-8">
-              Tecnologia que já salvou <span className="text-green-600">milhares de motoristas</span>
+              Tecnologia que já salvou <span className="text-green-600">centenas de motoristas</span>
             </h2>
 
             <div className="grid md:grid-cols-3 gap-8 mb-12">
@@ -333,7 +333,7 @@ const Index = () => {
                 <p className="text-gray-700">Compatibilidade com carros brasileiros</p>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-green-600 mb-2">15.000+</div>
+                <div className="mb-2" style={{height: '38px'}}></div>
                 <p className="text-gray-700">Motoristas já protegidos</p>
               </div>
               <div className="text-center">
