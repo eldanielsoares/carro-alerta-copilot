@@ -52,7 +52,6 @@ const Quiz = () => {
     let pontos = 0;
     if (answers[0] === "Mais de 10 anos") pontos += 2;
     else if (answers[0] === "6 a 10 anos") pontos += 1;
-
     if (answers[1] === "Sim") pontos += 2;
     if (answers[2] === "Sim") pontos += 2;
     else if (answers[2] === "Não lembro") pontos += 1;
@@ -60,23 +59,23 @@ const Quiz = () => {
     if (pontos >= 4) {
       return { 
         label: "ALTO", 
-        color: "bg-red-500", 
         msg: "Seu risco está alto! Recomenda-se atenção urgente.",
-        progress: 100
+        progress: 100,
+        labelColor: "text-red-600"
       };
     } else if (pontos >= 2) {
       return { 
         label: "MÉDIO", 
-        color: "bg-orange-400", 
         msg: "Risco moderado, vale a pena cuidar mais do seu veículo.",
-        progress: 66
+        progress: 66,
+        labelColor: "text-yellow-500"
       };
     } else {
       return { 
         label: "BAIXO", 
-        color: "bg-green-500", 
         msg: "Muito bom! Seu risco está baixo, continue assim.",
-        progress: 33
+        progress: 33,
+        labelColor: "text-green-600"
       };
     }
   }
@@ -274,66 +273,48 @@ const Quiz = () => {
         <section className="py-16 bg-blue-50 min-h-screen flex items-center">
           <div className="container mx-auto px-4">
             <div className="max-w-lg mx-auto">
-              <Card className="bg-white border-2 border-gray-200 shadow-xl">
-                <CardContent className="p-8 text-center flex flex-col items-center">
-                  {
-                    // Pega score e estilos
-                    (() => {
-                      const result = calculateScore(quizAnswers);
-                      return (
-                        <>
-                          <div className="mb-8 w-full flex flex-col gap-3 items-center">
-                            <span className="text-lg text-black font-semibold block mb-2">Resultado da sua análise:</span>
-                            {/* Barra de progresso estilizada */}
-                            <div className="w-full max-w-xs flex flex-col gap-2">
-                              <div className="flex justify-between px-1">
-                                <span className="font-medium text-sm text-gray-500">Baixo</span>
-                                <span className="font-medium text-sm text-gray-500">Médio</span>
-                                <span className="font-medium text-sm text-gray-500">Alto</span>
-                              </div>
-                              <div className="relative">
-                                <Progress value={result.progress} className="h-4 bg-gray-200" />
-                                {/* Overlay color based on risk */}
-                                <div 
-                                  className={`absolute top-0 left-0 h-4 rounded-full transition-all duration-500 pointer-events-none ${result.color}`}
-                                  style={{ width: `${result.progress}%`, zIndex: 1, opacity: 0.5 }}
-                                />
-                              </div>
-                              {/* Mostra a bolinha marcando onde está */}
-                              <div className="relative w-full h-4 mt-2 flex items-center">
-                                <div
-                                  className="absolute"
-                                  style={{
-                                    left: `calc(${result.progress}% - 14px)`,
-                                    top: "-6px",
-                                    transition: "left 0.5s",
-                                  }}
-                                >
-                                  <div className={`w-7 h-7 rounded-full ${result.color} border-4 border-white shadow-lg flex items-center justify-center`}>
-                                    <span className="text-white font-bold text-xs">{result.label}</span>
-                                  </div>
-                                </div>
-                                {/* Linhas de fundo para referência */}
-                                <div className="w-full h-2 rounded-full bg-gray-200 opacity-40" />
-                              </div>
-                            </div>
+              <div className="bg-white border-2 border-gray-200 shadow-xl rounded-xl p-8 text-center flex flex-col items-center">
+                {
+                  (() => {
+                    const result = calculateScore(quizAnswers);
+                    return (
+                      <>
+                        <span className={`text-xl font-bold mb-3 uppercase tracking-wide ${result.labelColor}`}>
+                          {result.label}
+                        </span>
+                        {/* Gradiente de verde → amarelo → vermelho */}
+                        <div className="w-full max-w-xs mb-2">
+                          <div className="relative h-5 rounded-full overflow-hidden bg-gradient-to-r from-green-400 via-yellow-400 to-red-500">
+                            <div
+                              className="absolute top-0 left-0 h-full bg-white/0 transition-all duration-700"
+                              style={{
+                                width: `${result.progress}%`,
+                                background:
+                                  "linear-gradient(to right, #22c55e 0%, #fde047 50%, #ef4444 100%)",
+                                maskImage: `linear-gradient(to right, black ${result.progress}%, transparent ${result.progress}%)`
+                              }}
+                            ></div>
+                            <div
+                              className="absolute top-0 left-0 h-full bg-gradient-to-r from-green-400 via-yellow-400 to-red-500 transition-all duration-700"
+                              style={{
+                                width: `${result.progress}%`
+                              }}
+                            ></div>
                           </div>
-                          <div className="mb-6 text-gray-800 text-lg">
-                            {result.msg}
-                          </div>
-                          <Button
-                            size="lg"
-                            className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-10"
-                            onClick={handleContinueAfterScore}
-                          >
-                            Continuar
-                          </Button>
-                        </>
-                      )
-                    })()
-                  }
-                </CardContent>
-              </Card>
+                        </div>
+                        <div className="mb-6 text-gray-800 text-lg mt-4">{result.msg}</div>
+                        <Button
+                          size="lg"
+                          className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-10"
+                          onClick={handleContinueAfterScore}
+                        >
+                          Continuar
+                        </Button>
+                      </>
+                    );
+                  })()
+                }
+              </div>
             </div>
           </div>
         </section>
