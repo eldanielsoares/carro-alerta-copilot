@@ -476,12 +476,19 @@ const Index = () => {
       {/* Footer */}
       <footer className="bg-gray-100 py-8 border-t border-gray-200">
         <div className="container mx-auto px-4 text-center">
-          <h3 className="text-2xl font-bold text-black mb-4">ORYZUM COPILOT</h3>
+          <div className="flex justify-center mb-4">
+            <img
+              src="/lovable-uploads/f4f1a624-beb8-4c0f-9145-34cec43e1fb1.png"
+              alt="ORYZUM Logo"
+              className="mx-auto h-8 md:h-10 lg:h-12 w-auto"
+              style={{ maxWidth: 180 }}
+            />
+          </div>
           <p className="text-gray-600 mb-4">
             A solução definitiva para nunca mais ter surpresas com seu carro.
           </p>
           <p className="text-sm text-gray-500">
-            © 2024 Oryzum Copilot. Todos os direitos reservados.
+            © 2025 Oryzum Copilot. Todos os direitos reservados.
           </p>
         </div>
       </footer>
