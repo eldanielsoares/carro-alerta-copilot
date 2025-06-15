@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -167,17 +166,6 @@ const ReferralTab = ({ couponCode, setCouponCode }: ReferralTabProps) => {
               </div>
             </PopoverContent>
           </Popover>
-          <Button
-            variant="outline"
-            className="border-gray-400 text-gray-700 hover:bg-gray-100 font-bold"
-            type="button"
-            onClick={() => {
-              // WhatsApp atalho separado
-              shareOptions[0].onClick(couponCode);
-            }}
-          >
-            WhatsApp
-          </Button>
         </div>
       </CardContent>
     </Card>
@@ -185,4 +173,3 @@ const ReferralTab = ({ couponCode, setCouponCode }: ReferralTabProps) => {
 };
 
 export default ReferralTab;
-
