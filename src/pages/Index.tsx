@@ -110,7 +110,7 @@ const Index = () => {
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight" style={{ lineHeight: '1.2' }}>
               <span
                 className="block bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent"
               >
@@ -136,17 +136,21 @@ const Index = () => {
               <Button 
                 size="lg" 
                 onClick={scrollToForm}
-                className="w-full sm:w-auto bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white px-8 py-6 text-lg font-extrabold uppercase tracking-tight rounded-md border-0 shadow-none break-words whitespace-normal text-center min-h-[56px] transition-colors"
+                className="w-full sm:w-auto bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white px-6 py-4 text-base font-bold uppercase tracking-tight rounded-md border-0 shadow-none whitespace-normal text-center min-h-[56px] transition-colors leading-tight"
               >
-                QUERO PROTEGER MEU CARRO AGORA
+                <span className="break-words hyphens-auto">
+                  QUERO PROTEGER MEU CARRO AGORA
+                </span>
               </Button>
               <Button 
                 size="lg" 
                 variant="outline"
                 onClick={scrollToHowItWorks}
-                className="w-full sm:w-auto border-gray-600 text-gray-700 hover:bg-gray-100 px-8 py-6 text-lg font-bold break-words whitespace-normal text-center min-h-[56px] rounded-md shadow-none"
+                className="w-full sm:w-auto border-gray-600 text-gray-700 hover:bg-gray-100 px-6 py-4 text-base font-bold whitespace-normal text-center min-h-[56px] rounded-md shadow-none leading-tight"
               >
-                VER COMO FUNCIONA
+                <span className="break-words hyphens-auto">
+                  VER COMO FUNCIONA
+                </span>
               </Button>
             </div>
           </div>
@@ -166,9 +170,11 @@ const Index = () => {
             <Button 
               size="lg" 
               onClick={() => navigate('/quiz')}
-              className="bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white px-8 py-4 text-lg font-bold transition-colors"
+              className="bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white px-6 py-4 text-base font-bold transition-colors whitespace-normal leading-tight"
             >
-              FAZER ANÁLISE GRATUITA
+              <span className="break-words hyphens-auto">
+                FAZER ANÁLISE GRATUITA
+              </span>
             </Button>
           </div>
         </div>
@@ -466,10 +472,12 @@ const Index = () => {
                       type="submit"
                       size="lg"
                       disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white py-4 text-lg font-bold disabled:opacity-50 transition-colors"
+                      className="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white py-4 text-base font-bold disabled:opacity-50 transition-colors whitespace-normal leading-tight"
                     >
-                      <Gift className="mr-2" />
-                      {isSubmitting ? 'ENVIANDO...' : 'ENTRAR NA LISTA DE ESPERA'}
+                      <Gift className="mr-2 flex-shrink-0" />
+                      <span className="break-words hyphens-auto">
+                        {isSubmitting ? 'ENVIANDO...' : 'ENTRAR NA LISTA DE ESPERA'}
+                      </span>
                     </Button>
                   </form>
                   {/* Bloco da Oferta Especial estilizado igual ao quiz */}
