@@ -18,6 +18,7 @@ const Quiz = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [couponCode, setCouponCode] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [scoreStep, setScoreStep] = useState(false); // novo: controla se mostra o score
   const navigate = useNavigate();
 
   const quizQuestions = [
@@ -45,6 +46,26 @@ const Quiz = () => {
     "Show! Analisando seus dados para garantir o melhor desconto 👏"
   ];
 
+  // Função simples para gerar score
+  function calculateScore(answers: string[]) {
+    // Quanto mais "ruim" a resposta, maior o risco
+    let pontos = 0;
+    if (answers[0] === "Mais de 10 anos") pontos += 2;
+    else if (answers[0] === "6 a 10 anos") pontos += 1;
+
+    if (answers[1] === "Sim") pontos += 2;
+    if (answers[2] === "Sim") pontos += 2;
+    else if (answers[2] === "Não lembro") pontos += 1;
+
+    if (pontos >= 4) {
+      return { label: "ALTO", color: "text-red-600", msg: "Seu risco está alto! Recomenda-se atenção urgente." };
+    } else if (pontos >= 2) {
+      return { label: "MÉDIO", color: "text-orange-500", msg: "Risco moderado, vale a pena cuidar mais do seu veículo." };
+    } else {
+      return { label: "BAIXO", color: "text-green-600", msg: "Muito bom! Seu risco está baixo, continue assim." };
+    }
+  }
+
   const handleQuizAnswer = (answer: string) => {
     const newAnswers = [...quizAnswers, answer];
 
@@ -62,9 +83,14 @@ const Quiz = () => {
     } else {
       // Última pergunta: mostra loading, então formulário, como antes
       setTimeout(() => {
-        setShowForm(true);
+        setScoreStep(true); // mostrar feedback do score
       }, 2000);
     }
+  };
+
+  const handleContinueAfterScore = () => {
+    setScoreStep(false);
+    setShowForm(true);
   };
 
   const handleFormSubmit = async (e: React.FormEvent) => {
@@ -161,7 +187,7 @@ const Quiz = () => {
       </header>
 
       {/* Quiz Section */}
-      {!showForm && !showSuccess && (
+      {!showForm && !showSuccess && !scoreStep && (
         <section className="py-16 bg-blue-50 min-h-screen flex items-center">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto">
@@ -227,6 +253,32 @@ const Quiz = () => {
            </div>
          </section>
        )}
+
+      {/* Card de feedback do score */}
+      {scoreStep && !showForm && !showSuccess && (
+        <section className="py-16 bg-blue-50 min-h-screen flex items-center">
+          <div className="container mx-auto px-4">
+            <div className="max-w-lg mx-auto">
+              <Card className="bg-white border-2 border-gray-200 shadow-xl">
+                <CardContent className="p-8 text-center flex flex-col items-center">
+                  <div className="mb-6">
+                    <span className="text-lg text-black font-semibold block mb-2">Resultado da sua análise:</span>
+                    <span className={`text-5xl font-bold ${calculateScore(quizAnswers).color}`}>
+                      {calculateScore(quizAnswers).label}
+                    </span>
+                  </div>
+                  <div className="mb-6 text-gray-800 text-lg">
+                    {calculateScore(quizAnswers).msg}
+                  </div>
+                  <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-10" onClick={handleContinueAfterScore}>
+                    Continuar
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Scarcity + Form Section */}
       {showForm && !showSuccess && (
