@@ -74,7 +74,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header with Countdown */}
-      <div className="bg-red-600 text-white py-3 px-4 text-center">
+      <div className="bg-gray-800 text-white py-3 px-4 text-center">
         <div className="flex items-center justify-center gap-2">
           <Clock size={16} />
           <span className="font-bold">OFERTA EXPIRA EM: {formatTime(timeLeft)}</span>
@@ -82,11 +82,11 @@ const Index = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-gray-50 to-white py-16">
+      <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold text-black mb-6">
-              <span className="text-red-600">Seu carro pode estar escondendo</span>
+              <span className="text-gray-800">Seu carro pode estar escondendo</span>
               <br />
               <span className="text-black">um problema sério</span>
               <br />
@@ -94,16 +94,16 @@ const Index = () => {
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
-              Descubra os problemas ocultos do seu carro <span className="text-red-600 font-bold">ANTES</span> que virem prejuízo. 
+              Descubra os problemas ocultos do seu carro <span className="text-gray-800 font-bold">ANTES</span> que virem prejuízo. 
               Nossa IA monitora seu carro 24h e te avisa direto no WhatsApp.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-bold">
+              <Button size="lg" className="bg-black hover:bg-gray-800 text-white px-8 py-4 text-lg font-bold">
                 <Zap className="mr-2" />
                 QUERO PROTEGER MEU CARRO AGORA
               </Button>
-              <Button size="lg" variant="outline" className="border-black text-black hover:bg-black hover:text-white px-8 py-4 text-lg font-bold">
+              <Button size="lg" variant="outline" className="border-gray-600 text-gray-700 hover:bg-gray-100 px-8 py-4 text-lg font-bold">
                 VER COMO FUNCIONA
               </Button>
             </div>
@@ -112,13 +112,13 @@ const Index = () => {
       </section>
 
       {/* Problem Intensification */}
-      <section className="bg-red-50 py-16">
+      <section className="bg-gray-100 py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="bg-white border-2 border-red-200 rounded-lg p-8 mb-8 shadow-lg">
-              <AlertTriangle className="w-16 h-16 text-red-600 mx-auto mb-4" />
+            <div className="bg-white border-2 border-gray-300 rounded-lg p-8 mb-8 shadow-lg">
+              <AlertTriangle className="w-16 h-16 text-orange-500 mx-auto mb-4" />
               <h2 className="text-3xl font-bold text-black mb-6">
-                Você está jogando <span className="text-red-600">ROLETA RUSSA</span> toda vez que liga o carro
+                Você está jogando <span className="text-orange-600">ROLETA RUSSA</span> toda vez que liga o carro
               </h2>
               <p className="text-lg text-gray-700 mb-8 leading-relaxed">
                 A cada quilômetro rodado, seu carro acumula micro-falhas que você não vê. 
@@ -127,33 +127,33 @@ const Index = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="bg-white border-red-200 shadow-lg">
+              <Card className="bg-white border-gray-200 shadow-lg">
                 <CardContent className="p-6 text-center">
-                  <div className="text-red-600 text-3xl font-bold mb-2">R$ 3.000</div>
+                  <div className="text-orange-600 text-3xl font-bold mb-2">R$ 3.000</div>
                   <p className="text-gray-700">Motor fundido sem aviso</p>
                 </CardContent>
               </Card>
-              <Card className="bg-white border-red-200 shadow-lg">
+              <Card className="bg-white border-gray-200 shadow-lg">
                 <CardContent className="p-6 text-center">
-                  <div className="text-red-600 text-3xl font-bold mb-2">R$ 1.500</div>
+                  <div className="text-orange-600 text-3xl font-bold mb-2">R$ 1.500</div>
                   <p className="text-gray-700">Bateria que morre na pior hora</p>
                 </CardContent>
               </Card>
-              <Card className="bg-white border-red-200 shadow-lg">
+              <Card className="bg-white border-gray-200 shadow-lg">
                 <CardContent className="p-6 text-center">
-                  <div className="text-red-600 text-3xl font-bold mb-2">R$ 2.200</div>
+                  <div className="text-orange-600 text-3xl font-bold mb-2">R$ 2.200</div>
                   <p className="text-gray-700">Sistema elétrico em pane</p>
                 </CardContent>
               </Card>
-              <Card className="bg-white border-red-200 shadow-lg">
+              <Card className="bg-white border-gray-200 shadow-lg">
                 <CardContent className="p-6 text-center">
-                  <div className="text-red-600 text-3xl font-bold mb-2">R$ 800</div>
+                  <div className="text-orange-600 text-3xl font-bold mb-2">R$ 800</div>
                   <p className="text-gray-700">Guincho + diária perdida</p>
                 </CardContent>
               </Card>
             </div>
 
-            <div className="mt-12 p-8 bg-white rounded-lg border-2 border-red-200 shadow-lg">
+            <div className="mt-12 p-8 bg-white rounded-lg border-2 border-gray-300 shadow-lg">
               <h3 className="text-2xl font-bold text-black mb-4">
                 "Você não precisa mais jogar roleta russa toda vez que liga o carro. 
                 <span className="text-green-600"> Agora existe um jeito de saber ANTES."</span>
@@ -164,7 +164,7 @@ const Index = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-bold text-center text-black mb-12">
@@ -172,10 +172,10 @@ const Index = () => {
             </h2>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <Card className="bg-white border-2 border-green-200 shadow-lg hover:shadow-xl transition-all">
+              <Card className="bg-gray-50 border-2 border-gray-200 shadow-lg hover:shadow-xl transition-all">
                 <CardContent className="p-8">
                   <div className="flex items-center mb-4">
-                    <Smartphone className="w-8 h-8 text-green-600 mr-3" />
+                    <Smartphone className="w-8 h-8 text-blue-600 mr-3" />
                     <h3 className="text-xl font-bold text-black">Alertas no WhatsApp</h3>
                   </div>
                   <p className="text-gray-700">
@@ -185,10 +185,10 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white border-2 border-green-200 shadow-lg hover:shadow-xl transition-all">
+              <Card className="bg-gray-50 border-2 border-gray-200 shadow-lg hover:shadow-xl transition-all">
                 <CardContent className="p-8">
                   <div className="flex items-center mb-4">
-                    <Shield className="w-8 h-8 text-green-600 mr-3" />
+                    <Shield className="w-8 h-8 text-blue-600 mr-3" />
                     <h3 className="text-xl font-bold text-black">Proteção 24/7</h3>
                   </div>
                   <p className="text-gray-700">
@@ -198,7 +198,7 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white border-2 border-green-200 shadow-lg hover:shadow-xl transition-all">
+              <Card className="bg-gray-50 border-2 border-gray-200 shadow-lg hover:shadow-xl transition-all">
                 <CardContent className="p-8">
                   <div className="flex items-center mb-4">
                     <DollarSign className="w-8 h-8 text-green-600 mr-3" />
@@ -211,7 +211,7 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white border-2 border-green-200 shadow-lg hover:shadow-xl transition-all">
+              <Card className="bg-gray-50 border-2 border-gray-200 shadow-lg hover:shadow-xl transition-all">
                 <CardContent className="p-8">
                   <div className="flex items-center mb-4">
                     <CheckCircle className="w-8 h-8 text-green-600 mr-3" />
@@ -229,7 +229,7 @@ const Index = () => {
       </section>
 
       {/* How It Works */}
-      <section className="py-16 bg-blue-50">
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold text-black mb-12">
@@ -238,7 +238,7 @@ const Index = () => {
 
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="bg-blue-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div className="bg-gray-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-white">1</span>
                 </div>
                 <h3 className="text-xl font-bold text-black mb-2">Plugue o Scanner</h3>
@@ -246,7 +246,7 @@ const Index = () => {
               </div>
 
               <div className="text-center">
-                <div className="bg-blue-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div className="bg-gray-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-white">2</span>
                 </div>
                 <h3 className="text-xl font-bold text-black mb-2">IA Monitora</h3>
@@ -254,7 +254,7 @@ const Index = () => {
               </div>
 
               <div className="text-center">
-                <div className="bg-blue-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div className="bg-gray-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-white">3</span>
                 </div>
                 <h3 className="text-xl font-bold text-black mb-2">Recebe Alertas</h3>
@@ -262,7 +262,7 @@ const Index = () => {
               </div>
             </div>
 
-            <div className="mt-12 p-8 bg-white rounded-lg border-2 border-green-200 shadow-lg">
+            <div className="mt-12 p-8 bg-white rounded-lg border-2 border-gray-200 shadow-lg">
               <h3 className="text-2xl font-bold text-black mb-4">
                 Resultado: <span className="text-green-600">R$ 1.500 a R$ 3.000 economizados por ano</span>
               </h3>
@@ -275,7 +275,7 @@ const Index = () => {
       </section>
 
       {/* Authority Section */}
-      <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-black mb-8">
@@ -298,10 +298,10 @@ const Index = () => {
             </div>
 
             <div className="flex flex-wrap justify-center gap-4">
-              <Badge variant="outline" className="text-black border-black">✓ Tecnologia Internacional</Badge>
-              <Badge variant="outline" className="text-black border-black">✓ Manutenção Preditiva</Badge>
-              <Badge variant="outline" className="text-black border-black">✓ 100% Seguro</Badge>
-              <Badge variant="outline" className="text-black border-black">✓ Fácil Instalação</Badge>
+              <Badge variant="outline" className="text-black border-gray-400">✓ Tecnologia Internacional</Badge>
+              <Badge variant="outline" className="text-black border-gray-400">✓ Manutenção Preditiva</Badge>
+              <Badge variant="outline" className="text-black border-gray-400">✓ 100% Seguro</Badge>
+              <Badge variant="outline" className="text-black border-gray-400">✓ Fácil Instalação</Badge>
             </div>
           </div>
         </div>
@@ -309,7 +309,7 @@ const Index = () => {
 
       {/* Quiz Section */}
       {!showForm && !showSuccess && (
-        <section className="py-16 bg-indigo-50">
+        <section className="py-16 bg-blue-50">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto">
               <h2 className="text-3xl font-bold text-center text-black mb-8">
@@ -317,11 +317,11 @@ const Index = () => {
               </h2>
 
               {quizStep < quizQuestions.length ? (
-                <Card className="bg-white border-2 border-blue-200 shadow-xl">
+                <Card className="bg-white border-2 border-gray-200 shadow-xl">
                   <CardContent className="p-8">
                     <div className="mb-6">
                       <div className="flex justify-between items-center mb-4">
-                        <span className="text-blue-600 font-semibold">
+                        <span className="text-gray-600 font-semibold">
                           Pergunta {quizStep + 1} de {quizQuestions.length}
                         </span>
                         <div className="flex gap-1">
@@ -329,7 +329,7 @@ const Index = () => {
                             <div
                               key={index}
                               className={`w-3 h-3 rounded-full ${
-                                index <= quizStep ? 'bg-blue-600' : 'bg-gray-300'
+                                index <= quizStep ? 'bg-gray-600' : 'bg-gray-300'
                               }`}
                             />
                           ))}
@@ -345,7 +345,7 @@ const Index = () => {
                         <Button
                           key={index}
                           onClick={() => handleQuizAnswer(option)}
-                          className="w-full bg-blue-600 hover:bg-blue-700 text-white p-4 text-left justify-start font-bold"
+                          className="w-full bg-gray-700 hover:bg-gray-800 text-white p-4 text-left justify-start font-bold"
                           size="lg"
                         >
                           {option}
@@ -355,15 +355,15 @@ const Index = () => {
                   </CardContent>
                 </Card>
               ) : (
-                <Card className="bg-white border-2 border-blue-200 shadow-xl">
+                <Card className="bg-white border-2 border-gray-200 shadow-xl">
                   <CardContent className="p-8 text-center">
                     <div>
-                      <TrendingUp className="w-16 h-16 text-blue-600 mx-auto mb-4" />
+                      <TrendingUp className="w-16 h-16 text-gray-600 mx-auto mb-4" />
                       <h3 className="text-xl font-semibold text-black mb-4">
                         {quizQuestions[quizQuestions.length - 1].loading}
                       </h3>
                       <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
-                        <div className="bg-blue-600 h-2 rounded-full transition-all duration-1000" style={{width: '100%'}}></div>
+                        <div className="bg-gray-600 h-2 rounded-full transition-all duration-1000" style={{width: '100%'}}></div>
                       </div>
                       <p className="text-gray-700">Preparando sua análise personalizada...</p>
                     </div>
@@ -380,14 +380,14 @@ const Index = () => {
         <section className="py-16 bg-orange-50">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto">
-              <Alert className="mb-8 border-red-200 bg-red-50">
-                <AlertTriangle className="h-4 w-4 text-red-600" />
+              <Alert className="mb-8 border-orange-200 bg-orange-100">
+                <AlertTriangle className="h-4 w-4 text-orange-600" />
                 <AlertDescription className="text-black">
                   <strong>⚠️ ATENÇÃO:</strong> Você quase chegou a tempo. A primeira leva de 300 scanners ESGOTOU.
                 </AlertDescription>
               </Alert>
 
-              <Card className="bg-white border-2 border-orange-200 shadow-xl">
+              <Card className="bg-white border-2 border-gray-200 shadow-xl">
                 <CardContent className="p-8">
                   <div className="text-center mb-8">
                     <h2 className="text-3xl font-bold text-black mb-4">
@@ -442,7 +442,7 @@ const Index = () => {
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full bg-red-600 hover:bg-red-700 text-white py-4 text-lg font-bold"
+                      className="w-full bg-orange-600 hover:bg-orange-700 text-white py-4 text-lg font-bold"
                     >
                       <Gift className="mr-2" />
                       QUERO MEU SCANNER COM DESCONTO
@@ -470,7 +470,7 @@ const Index = () => {
         <section className="py-16 bg-green-50">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto text-center">
-              <Card className="bg-white border-2 border-green-200 shadow-xl">
+              <Card className="bg-white border-2 border-gray-200 shadow-xl">
                 <CardContent className="p-8">
                   <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-6" />
                   <h2 className="text-3xl font-bold text-black mb-4">
@@ -509,7 +509,7 @@ const Index = () => {
                       <Users className="mr-2" />
                       Compartilhar
                     </Button>
-                    <Button variant="outline" className="border-black text-black hover:bg-black hover:text-white font-bold">
+                    <Button variant="outline" className="border-gray-400 text-gray-700 hover:bg-gray-100 font-bold">
                       WhatsApp
                     </Button>
                   </div>
