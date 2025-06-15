@@ -174,14 +174,14 @@ const Index = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               <Card className="bg-white border-gray-200 shadow-lg">
                 <CardContent className="p-6 text-center">
-                  <div className="text-orange-600 text-3xl font-bold mb-2">R$ 3.000</div>
-                  <p className="text-gray-700">Motor fundido sem aviso</p>
+                  <div className="text-orange-600 text-3xl font-bold mb-2">R$ 600</div>
+                  <p className="text-gray-700">Bateria que morre na pior hora</p>
                 </CardContent>
               </Card>
               <Card className="bg-white border-gray-200 shadow-lg">
                 <CardContent className="p-6 text-center">
-                  <div className="text-orange-600 text-3xl font-bold mb-2">R$ 1.500</div>
-                  <p className="text-gray-700">Bateria que morre na pior hora</p>
+                  <div className="text-orange-600 text-3xl font-bold mb-2">R$ 3.000</div>
+                  <p className="text-gray-700">Motor fundido sem aviso</p>
                 </CardContent>
               </Card>
               <Card className="bg-white border-gray-200 shadow-lg">
