@@ -74,7 +74,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header with Countdown */}
-      <div className="bg-red-600 text-white py-3 px-4 text-center animate-pulse-red">
+      <div className="bg-red-600 text-white py-3 px-4 text-center">
         <div className="flex items-center justify-center gap-2">
           <Clock size={16} />
           <span className="font-bold">OFERTA EXPIRA EM: {formatTime(timeLeft)}</span>
@@ -82,39 +82,41 @@ const Index = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="text-center max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold text-black mb-6">
-            <span className="text-red-600">Seu carro pode estar escondendo</span>
-            <br />
-            <span className="text-black">um problema sério</span>
-            <br />
-            <span className="text-gray-600">— e você nem imagina.</span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
-            Descubra os problemas ocultos do seu carro <span className="text-red-600 font-bold">ANTES</span> que virem prejuízo. 
-            Nossa IA monitora seu carro 24h e te avisa direto no WhatsApp.
-          </p>
+      <section className="bg-gradient-to-b from-gray-50 to-white py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="text-4xl md:text-6xl font-bold text-black mb-6">
+              <span className="text-red-600">Seu carro pode estar escondendo</span>
+              <br />
+              <span className="text-black">um problema sério</span>
+              <br />
+              <span className="text-gray-600">— e você nem imagina.</span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
+              Descubra os problemas ocultos do seu carro <span className="text-red-600 font-bold">ANTES</span> que virem prejuízo. 
+              Nossa IA monitora seu carro 24h e te avisa direto no WhatsApp.
+            </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-bold">
-              <Zap className="mr-2" />
-              QUERO PROTEGER MEU CARRO AGORA
-            </Button>
-            <Button size="lg" variant="outline" className="border-black text-black hover:bg-black hover:text-white px-8 py-4 text-lg font-bold">
-              VER COMO FUNCIONA
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-bold">
+                <Zap className="mr-2" />
+                QUERO PROTEGER MEU CARRO AGORA
+              </Button>
+              <Button size="lg" variant="outline" className="border-black text-black hover:bg-black hover:text-white px-8 py-4 text-lg font-bold">
+                VER COMO FUNCIONA
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Problem Intensification */}
-      <section className="bg-gray-50 py-16">
+      <section className="bg-red-50 py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="bg-red-50 border-2 border-red-200 rounded-lg p-8 mb-8">
-              <AlertTriangle className="w-16 h-16 text-red-600 mx-auto mb-4 animate-shake" />
+            <div className="bg-white border-2 border-red-200 rounded-lg p-8 mb-8 shadow-lg">
+              <AlertTriangle className="w-16 h-16 text-red-600 mx-auto mb-4" />
               <h2 className="text-3xl font-bold text-black mb-6">
                 Você está jogando <span className="text-red-600">ROLETA RUSSA</span> toda vez que liga o carro
               </h2>
@@ -162,7 +164,7 @@ const Index = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-bold text-center text-black mb-12">
@@ -170,7 +172,7 @@ const Index = () => {
             </h2>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <Card className="bg-green-50 border-2 border-green-200 shadow-lg hover:shadow-xl transition-all">
+              <Card className="bg-white border-2 border-green-200 shadow-lg hover:shadow-xl transition-all">
                 <CardContent className="p-8">
                   <div className="flex items-center mb-4">
                     <Smartphone className="w-8 h-8 text-green-600 mr-3" />
@@ -183,7 +185,7 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-green-50 border-2 border-green-200 shadow-lg hover:shadow-xl transition-all">
+              <Card className="bg-white border-2 border-green-200 shadow-lg hover:shadow-xl transition-all">
                 <CardContent className="p-8">
                   <div className="flex items-center mb-4">
                     <Shield className="w-8 h-8 text-green-600 mr-3" />
@@ -196,7 +198,7 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-green-50 border-2 border-green-200 shadow-lg hover:shadow-xl transition-all">
+              <Card className="bg-white border-2 border-green-200 shadow-lg hover:shadow-xl transition-all">
                 <CardContent className="p-8">
                   <div className="flex items-center mb-4">
                     <DollarSign className="w-8 h-8 text-green-600 mr-3" />
@@ -209,7 +211,7 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-green-50 border-2 border-green-200 shadow-lg hover:shadow-xl transition-all">
+              <Card className="bg-white border-2 border-green-200 shadow-lg hover:shadow-xl transition-all">
                 <CardContent className="p-8">
                   <div className="flex items-center mb-4">
                     <CheckCircle className="w-8 h-8 text-green-600 mr-3" />
@@ -227,7 +229,7 @@ const Index = () => {
       </section>
 
       {/* How It Works */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-blue-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold text-black mb-12">
@@ -273,7 +275,7 @@ const Index = () => {
       </section>
 
       {/* Authority Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-black mb-8">
@@ -307,7 +309,7 @@ const Index = () => {
 
       {/* Quiz Section */}
       {!showForm && !showSuccess && (
-        <section className="py-16 bg-blue-50">
+        <section className="py-16 bg-indigo-50">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto">
               <h2 className="text-3xl font-bold text-center text-black mb-8">
@@ -355,13 +357,13 @@ const Index = () => {
               ) : (
                 <Card className="bg-white border-2 border-blue-200 shadow-xl">
                   <CardContent className="p-8 text-center">
-                    <div className="animate-pulse">
+                    <div>
                       <TrendingUp className="w-16 h-16 text-blue-600 mx-auto mb-4" />
                       <h3 className="text-xl font-semibold text-black mb-4">
                         {quizQuestions[quizQuestions.length - 1].loading}
                       </h3>
                       <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
-                        <div className="bg-blue-600 h-2 rounded-full animate-pulse" style={{width: '100%'}}></div>
+                        <div className="bg-blue-600 h-2 rounded-full transition-all duration-1000" style={{width: '100%'}}></div>
                       </div>
                       <p className="text-gray-700">Preparando sua análise personalizada...</p>
                     </div>
@@ -440,7 +442,7 @@ const Index = () => {
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full bg-red-600 hover:bg-red-700 text-white py-4 text-lg font-bold animate-pulse-red"
+                      className="w-full bg-red-600 hover:bg-red-700 text-white py-4 text-lg font-bold"
                     >
                       <Gift className="mr-2" />
                       QUERO MEU SCANNER COM DESCONTO
@@ -519,7 +521,7 @@ const Index = () => {
       )}
 
       {/* Footer */}
-      <footer className="bg-gray-50 py-8 border-t border-gray-200">
+      <footer className="bg-gray-100 py-8 border-t border-gray-200">
         <div className="container mx-auto px-4 text-center">
           <h3 className="text-2xl font-bold text-black mb-4">ORYZUM COPILOT</h3>
           <p className="text-gray-600 mb-4">
