@@ -110,7 +110,7 @@ const Index = () => {
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-normal">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
               <span
                 className="block bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent"
               >
