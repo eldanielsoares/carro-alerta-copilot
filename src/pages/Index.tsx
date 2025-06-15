@@ -25,6 +25,13 @@ const Index = () => {
     }
   };
 
+  const scrollToHowItWorks = () => {
+    const howItWorksElement = document.getElementById('how-it-works');
+    if (howItWorksElement) {
+      howItWorksElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -134,7 +141,8 @@ const Index = () => {
               </Button>
               <Button 
                 size="lg" 
-                variant="outline" 
+                variant="outline"
+                onClick={scrollToHowItWorks}
                 className="w-full sm:w-auto border-gray-600 text-gray-700 hover:bg-gray-100 px-8 py-6 text-lg font-bold break-words whitespace-normal text-center min-h-[56px] rounded-md shadow-none"
               >
                 VER COMO FUNCIONA
@@ -283,7 +291,10 @@ const Index = () => {
       </section>
 
       {/* How It Works */}
-      <section className="py-16 bg-gray-50">
+      <section 
+        id="how-it-works"
+        className="py-16 bg-gray-50"
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold text-black mb-12">
