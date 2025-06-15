@@ -378,14 +378,16 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
             {!showSuccess ? (
-              <Card className="bg-white border-2 border-gray-200 shadow-xl">
-                <CardContent className="p-8">
+              <Card
+                className="relative bg-white border-4 border-green-600/60 ring-4 ring-green-200 shadow-[0_8px_32px_0_rgba(34,197,94,0.22)] hover:scale-[1.025] transition-all animate-fade-in"
+                style={{ zIndex: 2 }}
+              >
+                <CardContent className="p-10 sm:p-12">
                   <div className="text-center mb-8">
                     <h2 className="text-3xl font-bold text-black mb-4 flex items-center justify-center gap-2">
                       <span role="img" aria-label="escudo">🛡️</span>
                       Proteja seu carro <span className="text-orange-600 ml-1">AGORA</span>
                     </h2>
-                    {/* Removido alerta "Remessa esgotada" */}
                     <p className="text-lg text-gray-700">
                       A oferta especial já acabou, mas você ainda pode entrar para a <span className="font-bold text-orange-600">lista de espera</span> e ser avisado na próxima abertura. Preencha seus dados e garanta prioridade!
                     </p>
@@ -468,6 +470,8 @@ const Index = () => {
                     </p>
                   </div>
                 </CardContent>
+                {/* brilho visual no topo do card */}
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-1/2 h-2 bg-gradient-to-r from-green-400/60 via-green-200/60 to-green-400/60 rounded-xl blur-md opacity-80 z-10 pointer-events-none" />
               </Card>
             ) : (
               <ReferralTab couponCode={couponCode} setCouponCode={setCouponCode} />
