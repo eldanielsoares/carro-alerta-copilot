@@ -30,12 +30,15 @@ const Index = () => {
 
     try {
       const url = 'https://api.sheety.co/dcad7a9f3b6bfb680d978268bd9f9ee9/outis/leads';
+      const cupomUrl = 'https://api.sheety.co/dcad7a9f3b6bfb680d978268bd9f9ee9/outis/cupom';
+
+      const generatedCoupon = formData.coupon || `ORYZUM${Math.floor(Math.random() * 1000)}`;
       const body = {
         lead: {
           nome: formData.name,
           email: formData.email,
           telefone: formData.whatsapp,
-          cupom: formData.coupon || ''
+          cupom: generatedCoupon,
         }
       };
 
@@ -53,8 +56,21 @@ const Index = () => {
       
       if (response.ok) {
         console.log('Lead salvo com sucesso:', json.lead);
-        // Gera o cupom na mesma lógica do quiz e passa para a tab
-        const generatedCoupon = `ORYZUM${Math.floor(Math.random() * 1000)}`;
+
+        // Após o lead ser salvo, salva o cupom na outra tabela também
+        if (formData.email) {
+          await fetch(cupomUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              cupom: {
+                email: formData.email,
+                cupom: generatedCoupon
+              }
+            })
+          });
+        }
+
         setCouponCode(generatedCoupon);
         setShowSuccess(true);
         toast({

@@ -55,24 +55,40 @@ const Quiz = () => {
     e.preventDefault();
     setIsSubmitting(true);
     const randomCoupon = `ORYZUM${Math.floor(Math.random() * 1000)}`;
-    setCouponCode(randomCoupon);
+    const cupomToSend = formData.coupon || randomCoupon;
+    setCouponCode(cupomToSend);
 
-    const url = 'https://api.sheety.co/dcad7a9f3b6bfb680d978268bd9f9ee9/outis/leads';
+    const leadUrl = 'https://api.sheety.co/dcad7a9f3b6bfb680d978268bd9f9ee9/outis/leads';
+    const cupomUrl = 'https://api.sheety.co/dcad7a9f3b6bfb680d978268bd9f9ee9/outis/cupom';
+
     const body = {
       lead: {
         nome: formData.name,
         email: formData.email,
         telefone: formData.whatsapp,
-        cupom: formData.coupon || randomCoupon
+        cupom: cupomToSend
       }
     };
 
     try {
-      const response = await fetch(url, {
+      const response = await fetch(leadUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });
+
+      if (formData.email) {
+        await fetch(cupomUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            cupom: {
+              email: formData.email,
+              cupom: cupomToSend
+            }
+          }),
+        });
+      }
 
       if (response.ok) {
         const data = await response.json();
