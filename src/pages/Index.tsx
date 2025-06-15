@@ -102,9 +102,9 @@ const Index = () => {
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center">
             <img
-              src="/lovable-uploads/cf7c72fc-843d-4997-b103-f24b49ff7513.png"
+              src="/lovable-uploads/f4f1a624-beb8-4c0f-9145-34cec43e1fb1.png"
               alt="ORYZUM Logo"
-              className="h-10 md:h-12 w-auto"
+              className="h-8 md:h-10 lg:h-12 w-auto"
             />
           </div>
           <div className="flex items-center gap-4">
