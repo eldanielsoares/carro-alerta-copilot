@@ -9,6 +9,7 @@ import { AlertTriangle, CheckCircle, TrendingUp, Gift, Users, Instagram, Youtube
 import { useNavigate } from 'react-router-dom';
 import ReferralTab from '@/components/ReferralTab';
 import { toast } from "@/hooks/use-toast";
+import { Progress } from "@/components/ui/progress";
 
 const Quiz = () => {
   const [quizStep, setQuizStep] = useState(0);
@@ -48,7 +49,6 @@ const Quiz = () => {
 
   // Função simples para gerar score
   function calculateScore(answers: string[]) {
-    // Quanto mais "ruim" a resposta, maior o risco
     let pontos = 0;
     if (answers[0] === "Mais de 10 anos") pontos += 2;
     else if (answers[0] === "6 a 10 anos") pontos += 1;
@@ -58,11 +58,26 @@ const Quiz = () => {
     else if (answers[2] === "Não lembro") pontos += 1;
 
     if (pontos >= 4) {
-      return { label: "ALTO", color: "text-red-600", msg: "Seu risco está alto! Recomenda-se atenção urgente." };
+      return { 
+        label: "ALTO", 
+        color: "bg-red-500", 
+        msg: "Seu risco está alto! Recomenda-se atenção urgente.",
+        progress: 100
+      };
     } else if (pontos >= 2) {
-      return { label: "MÉDIO", color: "text-orange-500", msg: "Risco moderado, vale a pena cuidar mais do seu veículo." };
+      return { 
+        label: "MÉDIO", 
+        color: "bg-orange-400", 
+        msg: "Risco moderado, vale a pena cuidar mais do seu veículo.",
+        progress: 66
+      };
     } else {
-      return { label: "BAIXO", color: "text-green-600", msg: "Muito bom! Seu risco está baixo, continue assim." };
+      return { 
+        label: "BAIXO", 
+        color: "bg-green-500", 
+        msg: "Muito bom! Seu risco está baixo, continue assim.",
+        progress: 33
+      };
     }
   }
 
@@ -261,18 +276,62 @@ const Quiz = () => {
             <div className="max-w-lg mx-auto">
               <Card className="bg-white border-2 border-gray-200 shadow-xl">
                 <CardContent className="p-8 text-center flex flex-col items-center">
-                  <div className="mb-6">
-                    <span className="text-lg text-black font-semibold block mb-2">Resultado da sua análise:</span>
-                    <span className={`text-5xl font-bold ${calculateScore(quizAnswers).color}`}>
-                      {calculateScore(quizAnswers).label}
-                    </span>
-                  </div>
-                  <div className="mb-6 text-gray-800 text-lg">
-                    {calculateScore(quizAnswers).msg}
-                  </div>
-                  <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-10" onClick={handleContinueAfterScore}>
-                    Continuar
-                  </Button>
+                  {
+                    // Pega score e estilos
+                    (() => {
+                      const result = calculateScore(quizAnswers);
+                      return (
+                        <>
+                          <div className="mb-8 w-full flex flex-col gap-3 items-center">
+                            <span className="text-lg text-black font-semibold block mb-2">Resultado da sua análise:</span>
+                            {/* Barra de progresso estilizada */}
+                            <div className="w-full max-w-xs flex flex-col gap-2">
+                              <div className="flex justify-between px-1">
+                                <span className="font-medium text-sm text-gray-500">Baixo</span>
+                                <span className="font-medium text-sm text-gray-500">Médio</span>
+                                <span className="font-medium text-sm text-gray-500">Alto</span>
+                              </div>
+                              <div className="relative">
+                                <Progress value={result.progress} className="h-4 bg-gray-200" />
+                                {/* Overlay color based on risk */}
+                                <div 
+                                  className={`absolute top-0 left-0 h-4 rounded-full transition-all duration-500 pointer-events-none ${result.color}`}
+                                  style={{ width: `${result.progress}%`, zIndex: 1, opacity: 0.5 }}
+                                />
+                              </div>
+                              {/* Mostra a bolinha marcando onde está */}
+                              <div className="relative w-full h-4 mt-2 flex items-center">
+                                <div
+                                  className="absolute"
+                                  style={{
+                                    left: `calc(${result.progress}% - 14px)`,
+                                    top: "-6px",
+                                    transition: "left 0.5s",
+                                  }}
+                                >
+                                  <div className={`w-7 h-7 rounded-full ${result.color} border-4 border-white shadow-lg flex items-center justify-center`}>
+                                    <span className="text-white font-bold text-xs">{result.label}</span>
+                                  </div>
+                                </div>
+                                {/* Linhas de fundo para referência */}
+                                <div className="w-full h-2 rounded-full bg-gray-200 opacity-40" />
+                              </div>
+                            </div>
+                          </div>
+                          <div className="mb-6 text-gray-800 text-lg">
+                            {result.msg}
+                          </div>
+                          <Button
+                            size="lg"
+                            className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-10"
+                            onClick={handleContinueAfterScore}
+                          >
+                            Continuar
+                          </Button>
+                        </>
+                      )
+                    })()
+                  }
                 </CardContent>
               </Card>
             </div>
