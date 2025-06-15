@@ -348,7 +348,7 @@ const Index = () => {
             </div>
             <div className="flex justify-center mt-6">
               <CtaButton onClick={scrollToForm}>
-                Quero ser avisado na próxima abertura
+                QUERO PROTEGER MEU CARRO AGORA
               </CtaButton>
             </div>
           </div>
@@ -514,7 +514,7 @@ const Index = () => {
           </p>
           <div className="flex justify-center mt-4">
             <CtaButton onClick={scrollToForm}>
-              Entrar para a lista de espera agora
+              QUERO PROTEGER MEU CARRO AGORA
             </CtaButton>
           </div>
           <p className="text-sm text-gray-500 mt-4">

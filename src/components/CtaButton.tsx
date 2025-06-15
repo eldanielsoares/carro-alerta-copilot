@@ -1,14 +1,17 @@
 
 import { Button } from "@/components/ui/button";
-import { Gift, Zap } from "lucide-react";
 
 interface CtaButtonProps {
   onClick: () => void;
   variant?: "primary" | "secondary";
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
-const CtaButton = ({ onClick, variant = "primary", children }: CtaButtonProps) => {
+const CtaButton = ({
+  onClick,
+  variant = "primary",
+  children = "QUERO PROTEGER MEU CARRO AGORA",
+}: CtaButtonProps) => {
   return (
     <Button
       onClick={onClick}
@@ -19,7 +22,6 @@ const CtaButton = ({ onClick, variant = "primary", children }: CtaButtonProps) =
           : "border-gray-600 text-gray-700 hover:bg-gray-100 px-8 py-4 text-lg font-bold w-full md:w-auto transition-colors"
       }
     >
-      {variant === "primary" ? <Gift className="mr-2" /> : <Zap className="mr-2" />}
       {children}
     </Button>
   );
