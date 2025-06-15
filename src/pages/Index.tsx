@@ -333,7 +333,7 @@ const Index = () => {
                 <p className="text-gray-700">Compatibilidade com carros brasileiros</p>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-green-600 mb-2">Crescendo todos os dias</div>
+                <div className="text-2xl font-bold text-green-600 mb-2">1k</div>
                 <p className="text-gray-700">Motoristas já protegidos</p>
               </div>
               <div className="text-center">
