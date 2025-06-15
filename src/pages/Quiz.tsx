@@ -17,6 +17,7 @@ const Quiz = () => {
   const [formData, setFormData] = useState({ name: '', email: '', whatsapp: '', coupon: '' });
   const [showSuccess, setShowSuccess] = useState(false);
   const [couponCode, setCouponCode] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
   const quizQuestions = [
@@ -52,11 +53,10 @@ const Quiz = () => {
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Gera cupom antes de enviar
+    setIsSubmitting(true);
     const randomCoupon = `ORYZUM${Math.floor(Math.random() * 1000)}`;
     setCouponCode(randomCoupon);
 
-    // Prepara os dados usando chaves minúsculas, igual à home/index
     const url = 'https://api.sheety.co/dcad7a9f3b6bfb680d978268bd9f9ee9/outis/leads';
     const body = {
       lead: {
@@ -68,7 +68,6 @@ const Quiz = () => {
     };
 
     try {
-      // Envia para Sheety
       const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -96,6 +95,8 @@ const Quiz = () => {
         description: "Ocorreu um problema ao enviar seus dados.",
         variant: "destructive",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -274,9 +275,10 @@ const Quiz = () => {
                       type="submit"
                       size="lg"
                       className="w-full bg-orange-600 hover:bg-orange-700 text-white py-4 text-lg font-bold"
+                      disabled={isSubmitting}
                     >
                       <Gift className="mr-2" />
-                      QUERO MEU SCANNER COM DESCONTO
+                      {isSubmitting ? "Enviando..." : "QUERO MEU SCANNER COM DESCONTO"}
                     </Button>
                   </form>
 
