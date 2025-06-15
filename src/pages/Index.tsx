@@ -106,54 +106,48 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      {/* Hero Section (agora com imagem do produto ao lado no desktop, abaixo no mobile) */}
+      {/* Hero Section */}
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
-          <div 
-            className="
-              flex flex-col-reverse lg:flex-row items-center 
-              max-w-5xl mx-auto
-              gap-10
-            "
-          >
-            {/* Texto Hero centralizado */}
-            <div className="w-full lg:w-7/12 flex flex-col justify-center text-center lg:text-left">
-              <h1 className="text-[2.2rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[4rem] font-extrabold mb-6 leading-tight text-green-600">
-                Seu carro pode estar<br />
-                escondendo<br />
-                um problema sério<br />
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-normal">
+              <span
+                className="block bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent"
+              >
+                Seu carro pode estar escondendo
+              </span>
+              <span
+                className="block bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent"
+              >
+                um problema sério
+              </span>
+              <span
+                className="block bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent"
+              >
                 — e você nem imagina.
-              </h1>
-              <p className="text-lg md:text-2xl text-gray-700 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                Descubra os problemas ocultos do seu carro <span className="text-gray-800 font-bold">ANTES</span> que virem prejuízo. Nossa IA monitora seu carro 24h e te avisa direto no WhatsApp.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-2 w-full max-w-xl mx-auto lg:mx-0">
-                <Button 
-                  size="lg" 
-                  onClick={scrollToForm}
-                  className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg font-extrabold uppercase tracking-tight rounded-md border-0 shadow-none break-words whitespace-normal text-center min-h-[56px] transition-colors"
-                >
-                  QUERO PROTEGER MEU CARRO AGORA
-                </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline"
-                  onClick={scrollToHowItWorks}
-                  className="w-full sm:w-auto border-gray-600 text-gray-800 hover:bg-gray-100 px-8 py-4 text-lg font-bold break-words whitespace-normal text-center min-h-[56px] rounded-md shadow-none"
-                >
-                  VER COMO FUNCIONA
-                </Button>
-              </div>
-            </div>
-            {/* Imagem do scanner ORYZUM */}
-            <div className="w-full lg:w-5/12 flex justify-center items-center mb-8 lg:mb-0">
-              <img 
-                src="/lovable-uploads/19cf008f-3c28-4c1b-9362-ed6383af7e25.png" 
-                alt="ORYZUM Scanner" 
-                className="max-w-[340px] w-full h-auto drop-shadow-2xl select-none pointer-events-none"
-                style={{ objectFit: 'contain' }}
-                draggable={false}
-              />
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
+              Descubra os problemas ocultos do seu carro <span className="text-gray-800 font-bold">ANTES</span> que virem prejuízo. 
+              Nossa IA monitora seu carro 24h e te avisa direto no WhatsApp.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <Button 
+                size="lg" 
+                onClick={scrollToForm}
+                className="w-full sm:w-auto bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white px-8 py-6 text-lg font-extrabold uppercase tracking-tight rounded-md border-0 shadow-none break-words whitespace-normal text-center min-h-[56px] transition-colors"
+              >
+                QUERO PROTEGER MEU CARRO AGORA
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline"
+                onClick={scrollToHowItWorks}
+                className="w-full sm:w-auto border-gray-600 text-gray-700 hover:bg-gray-100 px-8 py-6 text-lg font-bold break-words whitespace-normal text-center min-h-[56px] rounded-md shadow-none"
+              >
+                VER COMO FUNCIONA
+              </Button>
             </div>
           </div>
         </div>
@@ -307,56 +301,41 @@ const Index = () => {
             <h2 className="text-4xl font-bold text-black mb-12">
               Como funciona (é mais simples do que trocar pneu)
             </h2>
-            <div className="flex flex-col lg:flex-row items-stretch justify-center gap-10 lg:gap-16">
-              {/* Passos */}
-              <div className="flex-1">
-                <div className="grid md:grid-cols-3 gap-8">
-                  <div className="text-center">
-                    <div className="bg-gradient-to-r from-green-500 to-green-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                      <span className="text-2xl font-bold text-white">1</span>
-                    </div>
-                    <h3 className="text-xl font-bold mb-2">
-                      <span className="bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent">
-                        Plugue o Scanner
-                      </span>
-                    </h3>
-                    <p className="text-gray-700">Conecte o dispositivo OBD2 em 30 segundos. Mais fácil que carregar o celular.</p>
-                  </div>
-
-                  <div className="text-center">
-                    <div className="bg-gradient-to-r from-green-500 to-green-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                      <span className="text-2xl font-bold text-white">2</span>
-                    </div>
-                    <h3 className="text-xl font-bold mb-2">
-                      <span className="bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent">
-                        IA Monitora
-                      </span>
-                    </h3>
-                    <p className="text-gray-700">Nossa inteligência artificial trabalha 24h analisando a saúde do seu carro.</p>
-                  </div>
-
-                  <div className="text-center">
-                    <div className="bg-gradient-to-r from-green-500 to-green-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                      <span className="text-2xl font-bold text-white">3</span>
-                    </div>
-                    <h3 className="text-xl font-bold mb-2">
-                      <span className="bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent">
-                        Recebe Alertas
-                      </span>
-                    </h3>
-                    <p className="text-gray-700">WhatsApp te avisa sobre problemas ANTES que eles aconteçam. Simples assim.</p>
-                  </div>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="bg-gradient-to-r from-green-500 to-green-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-white">1</span>
                 </div>
+                <h3 className="text-xl font-bold mb-2">
+                  <span className="bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent">
+                    Plugue o Scanner
+                  </span>
+                </h3>
+                <p className="text-gray-700">Conecte o dispositivo OBD2 em 30 segundos. Mais fácil que carregar o celular.</p>
               </div>
-              {/* Imagem */}
-              <div className="flex-1 flex items-center justify-center lg:justify-end mt-8 lg:mt-0">
-                <img
-                  src="/lovable-uploads/19cf008f-3c28-4c1b-9362-ed6383af7e25.png"
-                  alt="ORYZUM Scanner"
-                  className="max-w-[300px] w-full h-auto drop-shadow-2xl select-none pointer-events-none"
-                  style={{ objectFit: 'contain' }}
-                  draggable={false}
-                />
+
+              <div className="text-center">
+                <div className="bg-gradient-to-r from-green-500 to-green-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-white">2</span>
+                </div>
+                <h3 className="text-xl font-bold mb-2">
+                  <span className="bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent">
+                    IA Monitora
+                  </span>
+                </h3>
+                <p className="text-gray-700">Nossa inteligência artificial trabalha 24h analisando a saúde do seu carro.</p>
+              </div>
+
+              <div className="text-center">
+                <div className="bg-gradient-to-r from-green-500 to-green-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-white">3</span>
+                </div>
+                <h3 className="text-xl font-bold mb-2">
+                  <span className="bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent">
+                    Recebe Alertas
+                  </span>
+                </h3>
+                <p className="text-gray-700">WhatsApp te avisa sobre problemas ANTES que eles aconteçam. Simples assim.</p>
               </div>
             </div>
             <div className="mt-12 p-8 bg-white rounded-lg border-2 border-gray-200 shadow-lg mb-8">
