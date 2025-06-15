@@ -1,4 +1,5 @@
 
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -13,7 +14,7 @@ const Quiz = () => {
   const [quizStep, setQuizStep] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState<string[]>([]);
   const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', whatsapp: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', whatsapp: '', coupon: '' });
   const [showSuccess, setShowSuccess] = useState(false);
   const [couponCode, setCouponCode] = useState('');
   const navigate = useNavigate();
@@ -215,6 +216,18 @@ const Quiz = () => {
                       />
                     </div>
 
+                    <div>
+                      <Label htmlFor="coupon" className="text-black font-semibold">Cupom de desconto (opcional)</Label>
+                      <Input
+                        id="coupon"
+                        type="text"
+                        value={formData.coupon}
+                        onChange={(e) => setFormData({...formData, coupon: e.target.value})}
+                        className="bg-white border-2 border-gray-200 text-black focus:border-orange-500"
+                        placeholder="Digite seu cupom aqui"
+                      />
+                    </div>
+
                     <Button
                       type="submit"
                       size="lg"
@@ -300,3 +313,4 @@ const Quiz = () => {
 };
 
 export default Quiz;
+
