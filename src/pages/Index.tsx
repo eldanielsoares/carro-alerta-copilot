@@ -292,7 +292,7 @@ const Index = () => {
 
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="bg-gray-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div className="bg-gradient-to-r from-green-500 to-green-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-white">1</span>
                 </div>
                 <h3 className="text-xl font-bold mb-2">
@@ -304,7 +304,7 @@ const Index = () => {
               </div>
 
               <div className="text-center">
-                <div className="bg-gray-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div className="bg-gradient-to-r from-green-500 to-green-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-white">2</span>
                 </div>
                 <h3 className="text-xl font-bold mb-2">
@@ -316,7 +316,7 @@ const Index = () => {
               </div>
 
               <div className="text-center">
-                <div className="bg-gray-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div className="bg-gradient-to-r from-green-500 to-green-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-white">3</span>
                 </div>
                 <h3 className="text-xl font-bold mb-2">
