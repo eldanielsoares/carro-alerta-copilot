@@ -307,7 +307,7 @@ const Quiz = () => {
                         <div className="mb-6 text-gray-800 text-lg mt-4">{result.msg}</div>
                         <Button
                           size="lg"
-                          className="w-full flex flex-row items-center justify-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-4 break-words whitespace-normal text-center"
+                          className="w-full min-h-[56px] flex items-center justify-center bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 px-4 break-words whitespace-normal text-center text-lg"
                           onClick={handleContinueAfterScore}
                         >
                           GARANTIR MEU DESCONTO AGORA
@@ -401,10 +401,9 @@ const Quiz = () => {
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full flex flex-row items-center justify-center gap-2 bg-orange-600 hover:bg-orange-700 text-white py-4 text-lg font-bold break-words whitespace-normal text-center"
+                      className="w-full min-h-[56px] flex items-center justify-center bg-orange-600 hover:bg-orange-700 text-white py-4 text-lg font-bold break-words whitespace-normal text-center"
                       disabled={isSubmitting}
                     >
-                      <Gift className="mr-2" />
                       {isSubmitting ? "Enviando..." : "QUERO MEU SCANNER COM DESCONTO"}
                     </Button>
                   </form>
