@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -7,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { AlertTriangle, CheckCircle, Smartphone, Shield, TrendingUp, Users, Gift, Zap, Clock, DollarSign } from 'lucide-react';
+import { AlertTriangle, CheckCircle, Smartphone, Shield, TrendingUp, Users, Gift, Zap, DollarSign, Instagram, Youtube, FileText } from 'lucide-react';
 
 const Index = () => {
   const [quizStep, setQuizStep] = useState(0);
@@ -16,22 +15,6 @@ const Index = () => {
   const [formData, setFormData] = useState({ name: '', email: '', whatsapp: '' });
   const [showSuccess, setShowSuccess] = useState(false);
   const [couponCode, setCouponCode] = useState('');
-  const [timeLeft, setTimeLeft] = useState(3600); // 1 hour countdown
-
-  // Countdown timer
-  useEffect(() => {
-    if (timeLeft > 0) {
-      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [timeLeft]);
-
-  const formatTime = (seconds: number) => {
-    const hours = Math.floor(seconds / 3600);
-    const minutes = Math.floor((seconds % 3600) / 60);
-    const secs = seconds % 60;
-    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-  };
 
   const quizQuestions = [
     {
@@ -73,13 +56,25 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header with Countdown */}
-      <div className="bg-gray-800 text-white py-3 px-4 text-center">
-        <div className="flex items-center justify-center gap-2">
-          <Clock size={16} />
-          <span className="font-bold">OFERTA EXPIRA EM: {formatTime(timeLeft)}</span>
+      {/* Header with Logo and Social Icons */}
+      <header className="bg-white border-b border-gray-200 py-4 px-4">
+        <div className="container mx-auto flex items-center justify-between">
+          <div className="flex items-center">
+            <h1 className="text-2xl font-bold text-black">ORYZUM COPILOT</h1>
+          </div>
+          <div className="flex items-center gap-4">
+            <a href="#" className="text-gray-600 hover:text-black transition-colors">
+              <Instagram size={24} />
+            </a>
+            <a href="#" className="text-gray-600 hover:text-black transition-colors">
+              <Youtube size={24} />
+            </a>
+            <a href="#" className="text-gray-600 hover:text-black transition-colors">
+              <FileText size={24} />
+            </a>
+          </div>
         </div>
-      </div>
+      </header>
 
       {/* Hero Section */}
       <section className="bg-gray-50 py-16">
