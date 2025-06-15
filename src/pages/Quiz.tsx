@@ -307,7 +307,7 @@ const Quiz = () => {
                         <div className="mb-6 text-gray-800 text-lg mt-4">{result.msg}</div>
                         <Button
                           size="lg"
-                          className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-10 break-words whitespace-normal"
+                          className="w-full flex flex-row items-center justify-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-4 break-words whitespace-normal text-center"
                           onClick={handleContinueAfterScore}
                         >
                           GARANTIR MEU DESCONTO AGORA
@@ -401,7 +401,7 @@ const Quiz = () => {
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full bg-orange-600 hover:bg-orange-700 text-white py-4 text-lg font-bold break-words whitespace-normal"
+                      className="w-full flex flex-row items-center justify-center gap-2 bg-orange-600 hover:bg-orange-700 text-white py-4 text-lg font-bold break-words whitespace-normal text-center"
                       disabled={isSubmitting}
                     >
                       <Gift className="mr-2" />
