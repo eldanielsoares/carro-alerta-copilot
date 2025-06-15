@@ -30,10 +30,10 @@ const Index = () => {
       const url = 'https://api.sheety.co/dcad7a9f3b6bfb680d978268bd9f9ee9/outis/leads';
       const body = {
         lead: {
-          NOME: formData.name,
-          EMAIL: formData.email,
-          TELEFONE: formData.whatsapp,
-          CUPOM: formData.coupon || ''
+          nome: formData.name,
+          email: formData.email,
+          telefone: formData.whatsapp,
+          cupom: formData.coupon || ''
         }
       };
 
