@@ -9,6 +9,7 @@ import { Smartphone, Shield, DollarSign, CheckCircle, Zap, Instagram, Youtube, F
 import { useNavigate } from 'react-router-dom';
 import ReferralTab from '@/components/ReferralTab';
 import Header from '@/components/Header';
+import CtaButton from "@/components/CtaButton";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -300,7 +301,6 @@ const Index = () => {
             <h2 className="text-4xl font-bold text-black mb-12">
               Como funciona (é mais simples do que trocar pneu)
             </h2>
-
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="bg-gradient-to-r from-green-500 to-green-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
@@ -338,14 +338,18 @@ const Index = () => {
                 <p className="text-gray-700">WhatsApp te avisa sobre problemas ANTES que eles aconteçam. Simples assim.</p>
               </div>
             </div>
-
-            <div className="mt-12 p-8 bg-white rounded-lg border-2 border-gray-200 shadow-lg">
+            <div className="mt-12 p-8 bg-white rounded-lg border-2 border-gray-200 shadow-lg mb-8">
               <h3 className="text-2xl font-bold text-black mb-4">
                 Resultado: <span className="text-green-600">R$ 1.500 a R$ 3.000 economizados por ano</span>
               </h3>
               <p className="text-lg text-gray-700">
                 Isso sem contar a tranquilidade de nunca mais ficar na mão ou passar vergonha com o carro parado.
               </p>
+            </div>
+            <div className="flex justify-center mt-6">
+              <CtaButton onClick={scrollToForm}>
+                Quero ser avisado na próxima abertura
+              </CtaButton>
             </div>
           </div>
         </div>
@@ -508,7 +512,12 @@ const Index = () => {
           <p className="text-gray-600 mb-4">
             A solução definitiva para nunca mais ter surpresas com seu carro.
           </p>
-          <p className="text-sm text-gray-500">
+          <div className="flex justify-center mt-4">
+            <CtaButton onClick={scrollToForm}>
+              Entrar para a lista de espera agora
+            </CtaButton>
+          </div>
+          <p className="text-sm text-gray-500 mt-4">
             © 2025 Oryzum Copilot. Todos os direitos reservados.
           </p>
         </div>
