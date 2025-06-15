@@ -154,9 +154,9 @@ const Index = () => {
             {/* Imagem Hero */}
             <div className="w-full md:w-1/2 flex justify-center items-center mb-10 md:mb-0">
               <img
-                src="/lovable-uploads/8f7881f4-f248-43be-bb9b-5a62c9b21496.png"
+                src="/lovable-uploads/d77e62af-b053-4521-9bf3-82030852acae.png"
                 alt="Dispositivo ORYZUM"
-                className="mx-auto max-w-[270px] md:max-w-xs lg:max-w-sm h-auto drop-shadow-lg transition-transform hover:scale-105"
+                className="mx-auto max-w-[180px] md:max-w-[210px] lg:max-w-[230px] h-auto drop-shadow-lg transition-transform hover:scale-105"
                 style={{ background: "transparent" }}
                 loading="lazy"
               />
