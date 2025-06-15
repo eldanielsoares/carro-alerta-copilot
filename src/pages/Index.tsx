@@ -374,12 +374,15 @@ const Index = () => {
       </section>
 
       {/* Protection Form Section */}
-      <section id="protection-form" className="py-16 bg-orange-50">
+      <section
+        id="protection-form"
+        className="py-16 bg-gradient-to-br from-green-400 via-green-500 to-green-700"
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
             {!showSuccess ? (
               <Card
-                className="relative bg-white border-4 border-green-600/60 ring-4 ring-green-200 shadow-[0_8px_32px_0_rgba(34,197,94,0.22)] hover:scale-[1.025] transition-all animate-fade-in"
+                className="relative bg-white border-none shadow-[0_8px_32px_0_rgba(34,197,94,0.22)] hover:scale-[1.025] transition-all animate-fade-in"
                 style={{ zIndex: 2 }}
               >
                 <CardContent className="p-10 sm:p-12">
