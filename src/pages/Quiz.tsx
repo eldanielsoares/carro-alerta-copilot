@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -25,19 +26,37 @@ const Quiz = () => {
 
   const quizQuestions = [
     {
-      question: "Qual o ano de fabricação do seu carro?",
-      options: ["Até 5 anos", "6 a 10 anos", "Mais de 10 anos"],
-      loading: "Analisando o nível de risco do seu veículo..."
+      question: "O Momento da Verdade",
+      subtitle: "A luz de 'check engine' (aquela do motorzinho) acende no seu painel. Qual é seu primeiro pensamento?",
+      options: [
+        "Droga, quanto isso vai me custar agora? Já imagino a conta da oficina.",
+        "Será que é grave? E se eu ficar na rua no meio do caminho? Bate uma insegurança.",
+        "Que preguiça... Agora vou ter que perder meu tempo na oficina e ainda por cima confiar no que o mecânico vai dizer.",
+        "Interessante. Vou conectar meu scanner em casa para ver o código de erro e pesquisar o que pode ser."
+      ],
+      loading: "Analisando seu perfil de motorista..."
     },
     {
-      question: "Alguma vez já precisou chamar guincho?",
-      options: ["Sim", "Não"],
-      loading: "Calculando sua exposição a falhas mecânicas..."
+      question: "O Perfil da Manutenção",
+      subtitle: "Qual destas frases descreve melhor a sua relação com a manutenção do carro?",
+      options: [
+        "Sigo o manual à risca. Manutenção preventiva é sagrada para mim.",
+        "Sou do time 'só quando quebra'. Se não tem barulho nem fumaça, está tudo bem.",
+        "Eu até tento, mas na correria do dia a dia, acabo sempre adiando e esquecendo.",
+        "Deixa comigo! Troca de óleo, filtros, velas... O básico eu mesmo resolvo na garagem."
+      ],
+      loading: "Calculando seu potencial de economia..."
     },
     {
-      question: "Já viu a luz da injeção acender?",
-      options: ["Sim", "Não", "Não lembro"],
-      loading: "Estamos calculando quanto você poderia estar economizando..."
+      question: "O Desejo Secreto",
+      subtitle: "Se você pudesse ter um superpoder para o seu carro, qual você escolheria?",
+      options: [
+        "O poder da Previsão: Saber que uma peça vai quebrar antes que ela quebre.",
+        "O poder do Raio-X: Entender na hora o que está errado e ter uma estimativa de quanto vai custar para arrumar.",
+        "O poder da Eficiência: Saber exatamente como dirigir para economizar o máximo de combustível possível.",
+        "O poder da Memória Total: Ter um diário de bordo digital e 100% confiável de toda a vida do carro."
+      ],
+      loading: "Preparando sua análise personalizada..."
     }
   ];
 
@@ -48,37 +67,105 @@ const Quiz = () => {
     "Show! Analisando seus dados para garantir o melhor desconto 👏"
   ];
 
-  // Função simples para gerar score
-  function calculateScore(answers: string[]) {
-    let pontos = 0;
-    if (answers[0] === "Mais de 10 anos") pontos += 2;
-    else if (answers[0] === "6 a 10 anos") pontos += 1;
-    if (answers[1] === "Sim") pontos += 2;
-    if (answers[2] === "Sim") pontos += 2;
-    else if (answers[2] === "Não lembro") pontos += 1;
+  // Função elaborada para gerar insights baseados nas respostas
+  function generateInsights(answers: string[]) {
+    const profiles = {
+      preocupado: 0,    // A nos 3
+      relaxado: 0,      // B nos 3
+      atarefado: 0,     // C nos 3
+      tecnico: 0        // D nos 3
+    };
 
-    if (pontos >= 4) {
-      return { 
-        label: "ALTO", 
-        msg: "Seu risco está alto! Recomenda-se atenção urgente.",
-        progress: 100,
-        labelColor: "text-red-600"
-      };
-    } else if (pontos >= 2) {
-      return { 
-        label: "MÉDIO", 
-        msg: "Risco moderado, vale a pena cuidar mais do seu veículo.",
-        progress: 66,
-        labelColor: "text-yellow-500"
-      };
-    } else {
-      return { 
-        label: "BAIXO", 
-        msg: "Muito bom! Seu risco está baixo, continue assim.",
-        progress: 33,
-        labelColor: "text-green-600"
-      };
-    }
+    // Contar perfis baseado nas respostas
+    answers.forEach(answer => {
+      if (answer.startsWith("Droga, quanto isso vai me custar") || 
+          answer.startsWith("Sigo o manual à risca") || 
+          answer.startsWith("O poder da Previsão")) {
+        profiles.preocupado++;
+      } else if (answer.startsWith("Será que é grave") || 
+                 answer.startsWith("Sou do time 'só quando quebra'") || 
+                 answer.startsWith("O poder do Raio-X")) {
+        profiles.relaxado++;
+      } else if (answer.startsWith("Que preguiça") || 
+                 answer.startsWith("Eu até tento, mas na correria") || 
+                 answer.startsWith("O poder da Eficiência")) {
+        profiles.atarefado++;
+      } else if (answer.startsWith("Interessante. Vou conectar") || 
+                 answer.startsWith("Deixa comigo!") || 
+                 answer.startsWith("O poder da Memória Total")) {
+        profiles.tecnico++;
+      }
+    });
+
+    // Determinar perfil dominante
+    const dominantProfile = Object.keys(profiles).reduce((a, b) => 
+      profiles[a as keyof typeof profiles] > profiles[b as keyof typeof profiles] ? a : b
+    );
+
+    const insights = {
+      preocupado: {
+        title: "O MOTORISTA CAUTELOSO",
+        subtitle: "Você valoriza segurança e prevenção acima de tudo",
+        description: "Seu perfil revela alguém que se preocupa genuinamente com o veículo e quer evitar surpresas desagradáveis. Você entende que manutenção preventiva é investimento, não gasto.",
+        benefits: [
+          "✓ Evite gastos inesperados de até R$ 3.000 em reparos emergenciais",
+          "✓ Monitore a saúde do motor em tempo real",
+          "✓ Receba alertas antes que pequenos problemas virem grandes prejuízos",
+          "✓ Tenha a tranquilidade de saber exatamente o que acontece com seu carro"
+        ],
+        savings: "R$ 2.500 - R$ 4.000",
+        urgency: "ALTA - Seu perfil indica que você precisa desta ferramenta AGORA",
+        color: "text-blue-600",
+        progress: 85
+      },
+      relaxado: {
+        title: "O MOTORISTA DESPREOCUPADO",
+        subtitle: "Você prefere resolver quando o problema aparece",
+        description: "Seu estilo é mais reativo, mas isso pode estar custando caro. Pequenos problemas ignorados se transformam em grandes gastos. É hora de ter controle sem complicação.",
+        benefits: [
+          "✓ Identifique problemas antes que seu carro te deixe na mão",
+          "✓ Evite as temidas 'surpresas' na oficina",
+          "✓ Saiba quando é realmente necessário se preocupar",
+          "✓ Economize nas manutenções desnecessárias que oficinas empurram"
+        ],
+        savings: "R$ 1.800 - R$ 3.200",
+        urgency: "MÉDIA - Mas o quanto antes, melhor para seu bolso",
+        color: "text-green-600",
+        progress: 65
+      },
+      atarefado: {
+        title: "O MOTORISTA OCUPADO",
+        subtitle: "Você quer praticidade e eficiência em tudo",
+        description: "Sabemos que seu tempo é precioso. Você precisa de soluções rápidas e inteligentes que funcionem no seu ritmo acelerado, sem complicar sua rotina.",
+        benefits: [
+          "✓ Diagnósticos instantâneos - sem perder tempo na oficina",
+          "✓ Otimize o consumo de combustível e economize todo mês",
+          "✓ Planeje manutenções de acordo com sua agenda",
+          "✓ Tenha controle total sem precisar ser um especialista"
+        ],
+        savings: "R$ 1.500 - R$ 2.800",
+        urgency: "ALTA - Perfeito para quem não tem tempo a perder",
+        color: "text-orange-600",
+        progress: 75
+      },
+      tecnico: {
+        title: "O MOTORISTA EXPERT",
+        subtitle: "Você gosta de entender e controlar tudo",
+        description: "Seu perfil técnico é admirável! Você já entende que conhecimento é poder. Agora imagine ter dados precisos e em tempo real para potencializar ainda mais seu conhecimento.",
+        benefits: [
+          "✓ Acesso a dados técnicos detalhados que só oficinas especializadas têm",
+          "✓ Histórico completo de performance e manutenções",
+          "✓ Identifique padrões e otimize a performance do seu veículo",
+          "✓ Seja completamente independente de terceiros para diagnósticos"
+        ],
+        savings: "R$ 2.000 - R$ 3.500",
+        urgency: "MÉDIA - Mas você vai amar ter esses dados",
+        color: "text-purple-600",
+        progress: 70
+      }
+    };
+
+    return insights[dominantProfile as keyof typeof insights];
   }
 
   const handleQuizAnswer = (answer: string) => {
@@ -208,9 +295,9 @@ const Quiz = () => {
       {!showForm && !showSuccess && !scoreStep && (
         <section className="py-16 bg-blue-50 min-h-screen flex items-center">
           <div className="container mx-auto px-4">
-            <div className="max-w-2xl mx-auto">
+            <div className="max-w-3xl mx-auto">
               <h2 className="text-3xl font-bold text-center text-black mb-8">
-                🎯 Descubra o nível de risco do seu carro em 30 segundos
+                🎯 Descubra seu perfil de motorista em 30 segundos
               </h2>
               {quizStep < quizQuestions.length ? (
                  <Card className="bg-white border-2 border-gray-200 shadow-xl">
@@ -231,18 +318,22 @@ const Quiz = () => {
                            ))}
                          </div>
                        </div>
-                       <h3 className="text-xl font-semibold text-black mb-6">
+                       <h3 className="text-2xl font-bold text-black mb-2">
                          {quizQuestions[quizStep].question}
                        </h3>
+                       <p className="text-lg text-gray-700 mb-6">
+                         {quizQuestions[quizStep].subtitle}
+                       </p>
                      </div>
                     <div className="space-y-3">
                       {quizQuestions[quizStep].options.map((option, index) => (
                         <Button
                           key={index}
                           onClick={() => handleQuizAnswer(option)}
-                          className="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white p-4 text-left justify-start font-bold transition-colors"
+                          className="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white p-6 text-left justify-start font-semibold transition-colors text-sm leading-relaxed"
                           size="lg"
                         >
+                          <span className="font-bold mr-2">{String.fromCharCode(65 + index)})</span>
                           {option}
                         </Button>
                       ))}
@@ -274,39 +365,57 @@ const Quiz = () => {
       {scoreStep && !showForm && !showSuccess && (
         <section className="py-16 bg-blue-50 min-h-screen flex items-center">
           <div className="container mx-auto px-4">
-            <div className="max-w-lg mx-auto">
-              <div className="bg-white border-2 border-gray-200 shadow-xl rounded-xl p-8 text-center flex flex-col items-center">
+            <div className="max-w-2xl mx-auto">
+              <div className="bg-white border-2 border-gray-200 shadow-xl rounded-xl p-8">
                 {
                   (() => {
-                    const result = calculateScore(quizAnswers);
-                    const progress = result.progress;
+                    const insight = generateInsights(quizAnswers);
                     return (
                       <>
-                        <span className={`text-xl font-bold mb-3 uppercase tracking-wide ${result.labelColor}`}>
-                          {result.label}
-                        </span>
-                        <div className="relative w-full max-w-xs mb-2 h-8 flex items-center">
-                          <div className="w-full h-5 rounded-full overflow-hidden bg-gradient-to-r from-green-400 via-yellow-400 to-red-500" />
-                          <div
-                            className="absolute top-0 left-0 h-8 flex items-center pointer-events-none"
-                            style={{
-                              left: `calc(${progress}% - 1px)`,
-                            }}
-                          >
-                            <div className="w-0.5 h-8 bg-black/80 rounded" />
+                        <div className="text-center mb-6">
+                          <span className={`text-2xl font-bold mb-2 block uppercase tracking-wide ${insight.color}`}>
+                            {insight.title}
+                          </span>
+                          <p className="text-lg text-gray-600 mb-4">{insight.subtitle}</p>
+                          <div className="relative w-full max-w-md mx-auto mb-4 h-6 flex items-center">
+                            <div className="w-full h-4 rounded-full overflow-hidden bg-gradient-to-r from-green-400 via-yellow-400 to-red-500" />
+                            <div
+                              className="absolute top-0 left-0 h-6 flex items-center pointer-events-none"
+                              style={{
+                                left: `calc(${insight.progress}% - 2px)`,
+                              }}
+                            >
+                              <div className="w-1 h-6 bg-black/80 rounded" />
+                            </div>
                           </div>
-                          <div
-                            className="absolute top-0 bottom-0 right-0 bg-white pointer-events-none"
-                            style={{
-                              left: `calc(${progress}% )`,
-                              width: `calc(100% - ${progress}%)`,
-                              borderRadius: "0 999px 999px 0",
-                              opacity: 0.75,
-                              zIndex: 10,
-                            }}
-                          ></div>
                         </div>
-                        <div className="mb-6 text-gray-800 text-lg mt-4">{result.msg}</div>
+                        
+                        <div className="text-left mb-6">
+                          <p className="text-gray-800 text-base mb-4 leading-relaxed">{insight.description}</p>
+                          
+                          <div className="bg-gray-50 p-4 rounded-lg mb-4">
+                            <h4 className="font-bold text-gray-800 mb-2">O que o ORYZUM pode fazer por você:</h4>
+                            <div className="space-y-1">
+                              {insight.benefits.map((benefit, index) => (
+                                <p key={index} className="text-sm text-gray-700">{benefit}</p>
+                              ))}
+                            </div>
+                          </div>
+                          
+                          <div className="bg-green-50 p-4 rounded-lg border border-green-200 mb-4">
+                            <div className="flex justify-between items-center">
+                              <div>
+                                <p className="text-sm text-gray-600">Economia potencial anual:</p>
+                                <p className="text-xl font-bold text-green-600">{insight.savings}</p>
+                              </div>
+                              <div className="text-right">
+                                <p className="text-sm text-gray-600">Urgência:</p>
+                                <p className="text-sm font-semibold text-gray-800">{insight.urgency}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
                         <Button
                           size="lg"
                           className="w-full min-h-[56px] flex items-center justify-center bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white font-bold py-6 px-4 break-words whitespace-normal text-center text-lg transition-colors"
