@@ -106,38 +106,26 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      {/* Hero Section */}
+      {/* Hero Section (Ajustada para ficar igual ao print enviado) */}
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col-reverse md:flex-row items-center md:items-stretch max-w-5xl mx-auto">
-            {/* Texto Hero */}
-            <div className="w-full md:w-1/2 flex flex-col justify-center text-center md:text-left">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-normal">
-                <span
-                  className="block bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent"
-                >
-                  Seu carro pode estar escondendo
-                </span>
-                <span
-                  className="block bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent"
-                >
-                  um problema sério
-                </span>
-                <span
-                  className="block bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent"
-                >
-                  — e você nem imagina.
-                </span>
+          <div className="flex flex-col items-center max-w-5xl mx-auto">
+            {/* Texto Hero centralizado */}
+            <div className="w-full flex flex-col justify-center text-center">
+              <h1 className="text-[2.2rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[4rem] font-extrabold mb-6 leading-tight text-green-600">
+                Seu carro pode estar<br />
+                escondendo<br />
+                um problema sério<br />
+                — e você nem imagina.
               </h1>
-              <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
-                Descubra os problemas ocultos do seu carro <span className="text-gray-800 font-bold">ANTES</span> que virem prejuízo. 
-                Nossa IA monitora seu carro 24h e te avisa direto no WhatsApp.
+              <p className="text-lg md:text-2xl text-gray-700 mb-10 leading-relaxed max-w-2xl mx-auto">
+                Descubra os problemas ocultos do seu carro <span className="text-gray-800 font-bold">ANTES</span> que virem prejuízo. Nossa IA monitora seu carro 24h e te avisa direto no WhatsApp.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-12">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-2 w-full max-w-xl mx-auto">
                 <Button 
                   size="lg" 
                   onClick={scrollToForm}
-                  className="w-full sm:w-auto bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white px-8 py-6 text-lg font-extrabold uppercase tracking-tight rounded-md border-0 shadow-none break-words whitespace-normal text-center min-h-[56px] transition-colors"
+                  className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg font-extrabold uppercase tracking-tight rounded-md border-0 shadow-none break-words whitespace-normal text-center min-h-[56px] transition-colors"
                 >
                   QUERO PROTEGER MEU CARRO AGORA
                 </Button>
@@ -145,7 +133,7 @@ const Index = () => {
                   size="lg" 
                   variant="outline"
                   onClick={scrollToHowItWorks}
-                  className="w-full sm:w-auto border-gray-600 text-gray-700 hover:bg-gray-100 px-8 py-6 text-lg font-bold break-words whitespace-normal text-center min-h-[56px] rounded-md shadow-none"
+                  className="w-full sm:w-auto border-gray-600 text-gray-800 hover:bg-gray-100 px-8 py-4 text-lg font-bold break-words whitespace-normal text-center min-h-[56px] rounded-md shadow-none"
                 >
                   VER COMO FUNCIONA
                 </Button>
