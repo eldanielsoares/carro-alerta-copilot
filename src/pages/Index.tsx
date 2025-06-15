@@ -452,10 +452,17 @@ const Index = () => {
                       {isSubmitting ? 'ENVIANDO...' : 'ENTRAR NA LISTA DE ESPERA'}
                     </Button>
                   </form>
-                  <div className="mt-8 p-6 bg-gray-100 rounded-lg border-2 border-gray-200 text-center">
-                    <span className="inline-flex items-center font-bold text-lg text-gray-600 gap-2">
-                      <Gift className="inline-block mr-1" /> Oferta especial indisponível
-                    </span>
+                  {/* Bloco da Oferta Especial estilizado igual ao quiz */}
+                  <div className="mt-8 p-6 bg-green-50 rounded-lg border-2 border-green-200">
+                    <h3 className="text-xl font-bold text-green-600 mb-2 flex items-center justify-center gap-1">
+                      <Gift className="inline-block mr-2" /> Oferta Especial:
+                    </h3>
+                    <p className="text-black mb-2">
+                      ✓ <strong>25% de desconto exclusivo</strong> na próxima leva
+                    </p>
+                    <p className="text-black mb-2">
+                      ✓ <strong>Indique 1 amigo e ambos ganham 40% de desconto</strong>
+                    </p>
                     <p className="text-black mt-2">
                       As próximas vagas serão avisadas por e-mail e WhatsApp. Cadastre-se para garantir prioridade!
                     </p>
