@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -330,11 +329,17 @@ const Quiz = () => {
                         <Button
                           key={index}
                           onClick={() => handleQuizAnswer(option)}
-                          className="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white p-6 text-left justify-start font-semibold transition-colors text-sm leading-relaxed"
+                          className="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white p-4 text-left justify-start font-medium transition-colors text-sm leading-relaxed min-h-[60px] whitespace-normal"
                           size="lg"
                         >
-                          <span className="font-bold mr-2">{String.fromCharCode(65 + index)})</span>
-                          {option}
+                          <div className="flex items-start gap-2 w-full">
+                            <span className="font-bold text-base flex-shrink-0 mt-0.5">
+                              {String.fromCharCode(65 + index)})
+                            </span>
+                            <span className="text-left break-words hyphens-auto">
+                              {option}
+                            </span>
+                          </div>
                         </Button>
                       ))}
                     </div>
