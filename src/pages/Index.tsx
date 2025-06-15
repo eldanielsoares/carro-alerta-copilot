@@ -101,7 +101,11 @@ const Index = () => {
       <header className="bg-white border-b border-gray-200 py-4 px-4">
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-black">ORYZUM COPILOT</h1>
+            <img
+              src="/lovable-uploads/cf7c72fc-843d-4997-b103-f24b49ff7513.png"
+              alt="ORYZUM Logo"
+              className="h-10 md:h-12 w-auto"
+            />
           </div>
           <div className="flex items-center gap-4">
             <a href="#" className="text-gray-600 hover:text-black transition-colors">
