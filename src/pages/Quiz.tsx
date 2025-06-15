@@ -8,6 +8,7 @@ import { Separator } from '@/components/ui/separator';
 import { AlertTriangle, CheckCircle, TrendingUp, Gift, Users, Instagram, Youtube, FileText } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import ReferralTab from '@/components/ReferralTab';
+import { toast } from "@/hooks/use-toast";
 
 const Quiz = () => {
   const [quizStep, setQuizStep] = useState(0);
@@ -49,11 +50,53 @@ const Quiz = () => {
     }
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setShowSuccess(true);
+    // Gera cupom antes de enviar
     const randomCoupon = `ORYZUM${Math.floor(Math.random() * 1000)}`;
     setCouponCode(randomCoupon);
+
+    // Prepara os dados usando chaves minúsculas, igual à home/index
+    const url = 'https://api.sheety.co/dcad7a9f3b6bfb680d978268bd9f9ee9/outis/leads';
+    const body = {
+      lead: {
+        nome: formData.name,
+        email: formData.email,
+        telefone: formData.whatsapp,
+        cupom: formData.coupon || randomCoupon
+      }
+    };
+
+    try {
+      // Envia para Sheety
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Lead salvo com sucesso (quiz):", data.lead);
+        toast({
+          title: "Sucesso!",
+          description: "Seus dados foram salvos. Veja seu cupom especial abaixo.",
+        });
+        setShowSuccess(true);
+      } else {
+        toast({
+          title: "Erro ao salvar dados!",
+          description: "Não foi possível enviar seus dados. Tente novamente mais tarde.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Erro inesperado!",
+        description: "Ocorreu um problema ao enviar seus dados.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
