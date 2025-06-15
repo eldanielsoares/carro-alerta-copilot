@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -9,8 +8,7 @@ import { Separator } from '@/components/ui/separator';
 import { AlertTriangle, CheckCircle, TrendingUp, Gift, Users, Instagram, Youtube, FileText } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import ReferralTab from '@/components/ReferralTab';
--import { toast } from "@/hooks/use-toast";
-+import { toast } from "@/hooks/use-toast";
+import { toast } from "@/hooks/use-toast";
 
 const Quiz = () => {
   const [quizStep, setQuizStep] = useState(0);
@@ -20,8 +18,6 @@ const Quiz = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [couponCode, setCouponCode] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
--  const [showFeedback, setShowFeedback] = useState(false);
--  const [feedbackMsg, setFeedbackMsg] = useState('');
   const navigate = useNavigate();
 
   const quizQuestions = [
@@ -52,39 +48,23 @@ const Quiz = () => {
   const handleQuizAnswer = (answer: string) => {
     const newAnswers = [...quizAnswers, answer];
 
--    // Mostra feedback e depois avança para próxima pergunta
--    setFeedbackMsg(feedbacks[quizStep] || 'Perfeito!');
--    setShowFeedback(true);
--
--    setTimeout(() => {
--      setShowFeedback(false);
--      setQuizAnswers(newAnswers);
--
--      if (quizStep < quizQuestions.length - 1) {
--        setQuizStep(quizStep + 1);
--      } else {
--        setTimeout(() => {
--          setShowForm(true);
--        }, 2000);
--      }
--    }, 1000);
-+    // Exibe o toast (do topo) como feedback motivacional
-+    toast({
-+      title: feedbacks[quizStep] || 'Perfeito!',
-+      description: "",
-+    });
-+    setQuizAnswers(newAnswers);
-+
-+    if (quizStep < quizQuestions.length - 1) {
-+      setTimeout(() => {
-+        setQuizStep(quizStep + 1);
-+      }, 500);
-+    } else {
-+      // Última pergunta: mostra loading, então formulário, como antes
-+      setTimeout(() => {
-+        setShowForm(true);
-+      }, 2000);
-+    }
+    // Exibe o toast (do topo) como feedback motivacional
+    toast({
+      title: feedbacks[quizStep] || 'Perfeito!',
+      description: "",
+    });
+    setQuizAnswers(newAnswers);
+
+    if (quizStep < quizQuestions.length - 1) {
+      setTimeout(() => {
+        setQuizStep(quizStep + 1);
+      }, 500);
+    } else {
+      // Última pergunta: mostra loading, então formulário, como antes
+      setTimeout(() => {
+        setShowForm(true);
+      }, 2000);
+    }
   };
 
   const handleFormSubmit = async (e: React.FormEvent) => {
@@ -188,16 +168,8 @@ const Quiz = () => {
               <h2 className="text-3xl font-bold text-center text-black mb-8">
                 🎯 Descubra o nível de risco do seu carro em 30 segundos
               </h2>
--
--              {showFeedback ? (
--                <div className="flex flex-col items-center justify-center h-[320px] animate-fade-in">
--                  <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-orange-400 mb-4">
--                    <span className="text-2xl font-semibold text-orange-600">{feedbackMsg}</span>
--                  </div>
--                  <div className="text-center text-gray-700">Aguarde...</div>
--                </div>
--              ) : quizStep < quizQuestions.length ? (
-+              {quizStep < quizQuestions.length ? (
+
+              {quizStep < quizQuestions.length ? (
                  <Card className="bg-white border-2 border-gray-200 shadow-xl">
                    <CardContent className="p-8">
                      <div className="mb-6">
@@ -221,31 +193,18 @@ const Quiz = () => {
                        </h3>
                      </div>
 
--                    <div className="space-y-3">
--                      {quizQuestions[quizStep].options.map((option, index) => (
--                        <Button
--                          key={index}
--                          onClick={() => handleQuizAnswer(option)}
--                          className="w-full bg-gray-700 hover:bg-gray-800 text-white p-4 text-left justify-start font-bold"
--                          size="lg"
--                          disabled={showFeedback}
--                        >
--                          {option}
--                        </Button>
--                      ))}
--                    </div>
-+                    <div className="space-y-3">
-+                      {quizQuestions[quizStep].options.map((option, index) => (
-+                        <Button
-+                          key={index}
-+                          onClick={() => handleQuizAnswer(option)}
-+                          className="w-full bg-gray-700 hover:bg-gray-800 text-white p-4 text-left justify-start font-bold"
-+                          size="lg"
-+                        >
-+                          {option}
-+                        </Button>
-+                      ))}
-+                    </div>
+                    <div className="space-y-3">
+                      {quizQuestions[quizStep].options.map((option, index) => (
+                        <Button
+                          key={index}
+                          onClick={() => handleQuizAnswer(option)}
+                          className="w-full bg-gray-700 hover:bg-gray-800 text-white p-4 text-left justify-start font-bold"
+                          size="lg"
+                        >
+                          {option}
+                        </Button>
+                      ))}
+                    </div>
                    </CardContent>
                  </Card>
                ) : (
@@ -387,4 +346,3 @@ const Quiz = () => {
 };
 
 export default Quiz;
-
