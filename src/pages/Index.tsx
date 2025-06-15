@@ -8,6 +8,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Smartphone, Shield, DollarSign, CheckCircle, Zap, Instagram, Youtube, FileText, AlertTriangle, Gift } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import ReferralTab from '@/components/ReferralTab';
+import Header from '@/components/Header';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -96,36 +97,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header with Logo and Social Icons - sticky, glassmorphism */}
-      <header
-        className="sticky top-0 z-40 px-4 py-3 backdrop-blur-md bg-white/60 border-b border-gray-200 transition-colors"
-        style={{
-          WebkitBackdropFilter: 'blur(12px)',
-          backdropFilter: 'blur(12px)'
-        }}
-      >
-        <div className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center">
-            <img
-              src="/lovable-uploads/f4f1a624-beb8-4c0f-9145-34cec43e1fb1.png"
-              alt="ORYZUM Logo"
-              className="h-8 md:h-10 lg:h-12 w-auto"
-            />
-          </div>
-          <div className="flex items-center gap-4">
-            <a href="#" className="text-gray-600 hover:text-black transition-colors">
-              <Instagram size={24} />
-            </a>
-            <a href="#" className="text-gray-600 hover:text-black transition-colors">
-              <Youtube size={24} />
-            </a>
-            <a href="#" className="text-gray-600 hover:text-black transition-colors">
-              <FileText size={24} />
-            </a>
-          </div>
-        </div>
-      </header>
-
+      <Header />
       {/* Hero Section */}
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">

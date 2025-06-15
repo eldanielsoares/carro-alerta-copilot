@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import ReferralTab from '@/components/ReferralTab';
 import { toast } from "@/hooks/use-toast";
 import { Progress } from "@/components/ui/progress";
+import Header from '@/components/Header';
 
 const Quiz = () => {
   const [quizStep, setQuizStep] = useState(0);
@@ -175,30 +176,7 @@ const Quiz = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header with Logo and Social Icons */}
-      <header className="bg-white border-b border-gray-200 py-4 px-4">
-        <div className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center">
-            <button 
-              onClick={() => navigate('/')}
-              className="text-2xl font-bold text-black hover:text-gray-700 transition-colors"
-            >
-              ORYZUM COPILOT
-            </button>
-          </div>
-          <div className="flex items-center gap-4">
-            <a href="#" className="text-gray-600 hover:text-black transition-colors">
-              <Instagram size={24} />
-            </a>
-            <a href="#" className="text-gray-600 hover:text-black transition-colors">
-              <Youtube size={24} />
-            </a>
-            <a href="#" className="text-gray-600 hover:text-black transition-colors">
-              <FileText size={24} />
-            </a>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Quiz Section */}
       {!showForm && !showSuccess && !scoreStep && (
