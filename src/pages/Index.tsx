@@ -4,13 +4,16 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { useToast } from '@/hooks/use-toast';
 import { Smartphone, Shield, DollarSign, CheckCircle, Zap, Instagram, Youtube, FileText, AlertTriangle, Gift } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [formData, setFormData] = useState({ name: '', email: '', whatsapp: '', coupon: '' });
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const scrollToForm = () => {
     const formElement = document.getElementById('protection-form');
@@ -19,9 +22,53 @@ const Index = () => {
     }
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setShowSuccess(true);
+    setIsSubmitting(true);
+
+    try {
+      const url = 'https://api.sheety.co/dcad7a9f3b6bfb680d978268bd9f9ee9/outis/leads';
+      const body = {
+        lead: {
+          NOME: formData.name,
+          EMAIL: formData.email,
+          TELEFONE: formData.whatsapp,
+          CUPOM: formData.coupon || ''
+        }
+      };
+
+      console.log('Enviando dados para Sheety:', body);
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body)
+      });
+
+      const json = await response.json();
+      
+      if (response.ok) {
+        console.log('Lead salvo com sucesso:', json.lead);
+        setShowSuccess(true);
+        toast({
+          title: "Sucesso!",
+          description: "Seus dados foram salvos com sucesso. Entraremos em contato em breve!",
+        });
+      } else {
+        throw new Error('Erro ao salvar os dados');
+      }
+    } catch (error) {
+      console.error('Erro ao enviar formulário:', error);
+      toast({
+        title: "Erro",
+        description: "Ocorreu um erro ao enviar seus dados. Tente novamente.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -369,10 +416,11 @@ const Index = () => {
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full bg-orange-600 hover:bg-orange-700 text-white py-4 text-lg font-bold"
+                      disabled={isSubmitting}
+                      className="w-full bg-orange-600 hover:bg-orange-700 text-white py-4 text-lg font-bold disabled:opacity-50"
                     >
                       <Gift className="mr-2" />
-                      QUERO PROTEGER MEU CARRO AGORA
+                      {isSubmitting ? 'ENVIANDO...' : 'QUERO PROTEGER MEU CARRO AGORA'}
                     </Button>
                   </form>
 
