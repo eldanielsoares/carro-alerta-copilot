@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { Smartphone, Shield, DollarSign, CheckCircle, Zap, Instagram, Youtube, FileText, AlertTriangle, Gift } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import ReferralTab from '@/components/ReferralTab';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const Index = () => {
   const [formData, setFormData] = useState({ name: '', email: '', whatsapp: '', coupon: '' });
   const [showSuccess, setShowSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [couponCode, setCouponCode] = useState('');
 
   const scrollToForm = () => {
     const formElement = document.getElementById('protection-form');
@@ -51,6 +53,9 @@ const Index = () => {
       
       if (response.ok) {
         console.log('Lead salvo com sucesso:', json.lead);
+        // Gera o cupom na mesma lógica do quiz e passa para a tab
+        const generatedCoupon = `ORYZUM${Math.floor(Math.random() * 1000)}`;
+        setCouponCode(generatedCoupon);
         setShowSuccess(true);
         toast({
           title: "Sucesso!",
@@ -436,17 +441,7 @@ const Index = () => {
                 </CardContent>
               </Card>
             ) : (
-              <Card className="bg-white border-2 border-gray-200 shadow-xl">
-                <CardContent className="p-8 text-center">
-                  <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-6" />
-                  <h2 className="text-3xl font-bold text-black mb-4">
-                    🎉 Parabéns! Seus problemas com o carro estão prestes a virar coisa do passado.
-                  </h2>
-                  <p className="text-lg text-gray-700 mb-8">
-                    Entraremos em contato em breve com mais detalhes sobre como proteger seu carro.
-                  </p>
-                </CardContent>
-              </Card>
+              <ReferralTab couponCode={couponCode} setCouponCode={setCouponCode} />
             )}
           </div>
         </div>
