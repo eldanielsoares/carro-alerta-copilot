@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -97,8 +96,14 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header with Logo and Social Icons */}
-      <header className="bg-white border-b border-gray-200 py-4 px-4">
+      {/* Header with Logo and Social Icons - sticky, glassmorphism */}
+      <header
+        className="sticky top-0 z-40 px-4 py-3 backdrop-blur-md bg-white/60 border-b border-gray-200 transition-colors"
+        style={{
+          WebkitBackdropFilter: 'blur(12px)',
+          backdropFilter: 'blur(12px)'
+        }}
+      >
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center">
             <img
