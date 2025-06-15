@@ -151,21 +151,6 @@ const Index = () => {
                 </Button>
               </div>
             </div>
-            {/* Imagem Hero */}
-            <div className="w-full md:w-1/2 flex justify-center items-center mb-10 md:mb-0">
-              <img
-                src="/lovable-uploads/8f7881f4-f248-43be-bb9b-5a62c9b21496.png"
-                alt="Dispositivo ORYZUM"
-                className="mx-auto max-w-[180px] md:max-w-[210px] lg:max-w-[230px] h-auto drop-shadow-lg transition-transform hover:scale-105"
-                style={{
-                  background: "transparent",
-                  boxShadow:
-                    "0 4px 24px 0 rgba(34,197,94,0.22), 0 1.5px 16px 0 #3b3b3b22",
-                  borderRadius: "18px",
-                }}
-                loading="lazy"
-              />
-            </div>
           </div>
         </div>
       </section>
