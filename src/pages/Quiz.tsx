@@ -277,30 +277,38 @@ const Quiz = () => {
                 {
                   (() => {
                     const result = calculateScore(quizAnswers);
+
+                    // Coordenadas do traço na barra (de 0 a 100%)
+                    const progress = result.progress;
+
                     return (
                       <>
                         <span className={`text-xl font-bold mb-3 uppercase tracking-wide ${result.labelColor}`}>
                           {result.label}
                         </span>
-                        {/* Gradiente de verde → amarelo → vermelho */}
-                        <div className="w-full max-w-xs mb-2">
-                          <div className="relative h-5 rounded-full overflow-hidden bg-gradient-to-r from-green-400 via-yellow-400 to-red-500">
-                            <div
-                              className="absolute top-0 left-0 h-full bg-white/0 transition-all duration-700"
-                              style={{
-                                width: `${result.progress}%`,
-                                background:
-                                  "linear-gradient(to right, #22c55e 0%, #fde047 50%, #ef4444 100%)",
-                                maskImage: `linear-gradient(to right, black ${result.progress}%, transparent ${result.progress}%)`
-                              }}
-                            ></div>
-                            <div
-                              className="absolute top-0 left-0 h-full bg-gradient-to-r from-green-400 via-yellow-400 to-red-500 transition-all duration-700"
-                              style={{
-                                width: `${result.progress}%`
-                              }}
-                            ></div>
+                        <div className="relative w-full max-w-xs mb-2 h-8 flex items-center">
+                          {/* Barra gradiente */}
+                          <div className="w-full h-5 rounded-full overflow-hidden bg-gradient-to-r from-green-400 via-yellow-400 to-red-500" />
+                          {/* Traço marcador */}
+                          <div
+                            className="absolute top-0 left-0 h-8 flex items-center pointer-events-none"
+                            style={{
+                              left: `calc(${progress}% - 1px)`,
+                            }}
+                          >
+                            <div className="w-0.5 h-8 bg-black/80 rounded" />
                           </div>
+                          {/* Camada branca cobrindo barra à direita do traço para parecer "medidor" */}
+                          <div
+                            className="absolute top-0 bottom-0 right-0 bg-white pointer-events-none"
+                            style={{
+                              left: `calc(${progress}% )`,
+                              width: `calc(100% - ${progress}%)`,
+                              borderRadius: "0 999px 999px 0",
+                              opacity: 0.75,
+                              zIndex: 10,
+                            }}
+                          ></div>
                         </div>
                         <div className="mb-6 text-gray-800 text-lg mt-4">{result.msg}</div>
                         <Button
